@@ -1,0 +1,147 @@
+/* /public/css/connexion.css */
+
+/* Styles de base pour la page de connexion */
+.main-container {
+    max-width: 400px;
+    margin: 150px auto;
+    padding: 20px;
+    background-color: #A8BCAA;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+#login h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+    color: #5D4037;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #212121;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    border: 1px solid #BDBDBD;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+}
+
+.btn-submit {
+    background-color: #0E402D;
+    color: #FFFDE7;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.btn-submit:hover {
+    background-color: #F2C31D;
+    transform: scale(1.05);
+    color: #0E402D;
+}
+
+#login p {
+    margin-top: 20px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    color: #212121;
+}
+
+#login p a {
+    color: #0E402D;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#login p a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    background-color: #5D4037;
+    color: #FFFDE7;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Media queries pour tablette (entre 768px et 1024px) */
+@media (max-width: 1024px) {
+    .main-container {
+        max-width: 80%;
+        margin: 100px auto;
+        padding: 20px;
+    }
+
+    #login h2 {
+        font-size: 32px;
+    }
+
+    .btn-submit {
+        font-size: 16px;
+        padding: 12px 25px;
+    }
+
+    #login p {
+        font-size: 15px;
+    }
+}
+
+/* Media queries pour mobile (moins de 768px) */
+@media (max-width: 768px) {
+    .main-container {
+        max-width: 90%;
+        margin: 80px auto;
+        padding: 15px;
+    }
+
+    #login h2 {
+        font-size: 28px;
+    }
+
+    .form-group label {
+        font-size: 16px;
+    }
+
+    .form-group input {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .btn-submit {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    #login p {
+        font-size: 14px;
+    }
+}

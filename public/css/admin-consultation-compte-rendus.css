@@ -1,0 +1,148 @@
+.main-container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    color: #5D4037;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Styles pour les compte-rendus */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table thead {
+    background-color: #0E402D;
+    color: #FFFDE7;
+}
+
+table th, table td {
+    padding: 15px;
+    text-align: left;
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    border-bottom: 1px solid #BDBDBD;
+}
+
+table th {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+}
+
+table tr:hover {
+    background-color: #A8BCAA;
+    cursor: pointer;
+}
+
+table tr td a {
+    color: #0E402D;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+table tr td a:hover {
+    text-decoration: underline;
+}
+
+/* Styles pour les filtres */
+.filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.filters input[type="text"], 
+.filters select {
+    width: 60%;
+    padding: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    border: 1px solid #BDBDBD;
+    border-radius: 5px;
+}
+
+.filters select {
+    width: 30%;
+}
+
+/* Ajouter ci-dessous les media queries pour tablette (entre 768px et 1024px) */
+@media (max-width: 1024px) {
+    .main-container {
+        max-width: 100%;
+        padding: 20px;
+        margin: 30px auto;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    table {
+        margin-top: 10px;
+    }
+
+    table th, table td {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .filters input[type="text"], 
+    .filters select {
+        width: 100%;
+    }
+}
+
+/* Media queries pour mobile (moins de 768px) */
+@media (max-width: 768px) {
+    .main-container {
+        max-width: 100%;
+        padding: 10px;
+        margin: 20px auto;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    table {
+        margin-top: 10px;
+    }
+
+    table th, table td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    table tr td a {
+        font-size: 14px;
+    }
+
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .filters input[type="text"], 
+    .filters select {
+        width: 100%;
+        padding: 8px;
+        font-size: 14px;
+    }
+}

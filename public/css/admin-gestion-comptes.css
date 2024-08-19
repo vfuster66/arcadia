@@ -1,0 +1,395 @@
+.main-container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    color: #5D4037;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Mise en page à deux colonnes */
+.two-column-layout {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+/* Styles pour les filtres */
+.filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.filters input[type="text"], 
+.filters select {
+    width: 60%;
+    padding: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    border: 1px solid #BDBDBD;
+    border-radius: 5px;
+}
+
+.filters select {
+    width: 30%;
+}
+
+/* Conteneur de création ou modification de compte */
+.create-account-container {
+    width: 50%; 
+    padding: 20px;
+    background-color: #A8BCAA;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.create-account-container h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    color: #0E402D;
+    margin-bottom: 20px;
+}
+
+.create-account-container .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.create-account-container label {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    color: #212121;
+    display: block;
+    margin-bottom: 5px;
+    margin-left: 20px;
+}
+
+.create-account-container input[type="text"],
+.create-account-container input[type="email"],
+.create-account-container input[type="password"],
+.create-account-container select {
+    width: 90%;
+    padding: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    border: 1px solid #BDBDBD;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto 20px auto;
+}
+
+/* Sélecteur de rôle */
+.select-role-container {
+    width: 100%; /* Le conteneur reste à 100% de largeur */
+}
+
+.select-role-container select {
+    width: 95%; /* Le sélecteur occupe 95% de la largeur */
+    padding: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    background-color: #FFFFFF;
+    border: 1px solid #BDBDBD;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto; /* Centrer l'élément */
+}
+
+.create-account-container button.btn-submit {
+    display: block;
+    width: 90%;
+    margin: 40px auto 0;
+    padding: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #FFFDE7;
+    background-color: #0E402D;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.create-account-container button.btn-submit:hover {
+    background-color: #F2C31D;
+    color: #0E402D;
+}
+
+/* Liste des comptes */
+.account-list {
+    width: 50%; 
+    max-height: 700px;
+    overflow-y: auto; 
+    padding: 20px;
+    background-color: #A8BCAA;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.account-list h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    color: #0E402D;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Styles pour les comptes */
+.account-item {
+    padding: 10px 20px;
+    border: 1px solid #BDBDBD;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFFDE7;
+}
+
+.account-item h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #212121;
+    flex-grow: 1;
+}
+
+.account-item button {
+    padding: 10px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    background-color: #0E402D;
+    color: #FFFDE7;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.account-item button:first-of-type {
+    margin-left: auto;
+}
+
+.account-item button:hover {
+    background-color: #F2C31D;
+    color: #0E402D;
+}
+
+
+/* Styles globaux pour les modals */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.4); 
+}
+
+/* Contenu du modal */
+.modal-content {
+    background-color: #FFFDE7;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #BDBDBD;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Bouton de fermeture du modal */
+.modal .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modal .close:hover,
+.modal .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Titre du modal */
+.modal h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    color: #5D4037;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Formulaire dans le modal */
+.modal .form-group {
+    margin-bottom: 20px;
+}
+
+.modal label {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    color: #212121;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.modal input[type="text"],
+.modal input[type="email"],
+.modal input[type="password"],
+.modal select {
+    width: 95%;
+    padding: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    border: 1px solid #BDBDBD;
+    border-radius: 5px;
+}
+
+.btn-submit, .btn-cancel {
+    display: inline-block;
+    padding: 10px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-submit {
+    background-color: #0E402D;
+    color: #FFFDE7;
+    border: none;
+}
+
+.btn-submit:hover {
+    background-color: #F2C31D;
+    color: #0E402D;
+}
+
+.btn-cancel {
+    background-color: #BDBDBD;
+    color: #FFFDE7;
+    border: none;
+}
+
+.btn-cancel:hover {
+    background-color: #F2C31D;
+    color: #0E402D;
+}
+
+/* Media queries pour tablette (entre 768px et 1024px) */
+@media (max-width: 1024px) {
+    .main-container {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .two-column-layout {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .create-account-container,
+    .account-list {
+        width: 100%;
+    }
+
+    .create-account-container h2,
+    .account-list h2 {
+        font-size: 24px;
+    }
+
+    .create-account-container button.btn-submit {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .account-list {
+        max-height: none;
+        padding: 15px;
+    }
+
+    .account-item {
+        padding: 10px;
+    }
+
+    .account-item h3 {
+        font-size: 16px;
+    }
+
+    .account-item button {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+/* Media queries pour mobile (moins de 768px) */
+@media (max-width: 768px) {
+    .main-container {
+        max-width: 95%;
+        padding: 10px;
+        margin: 20px auto;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .two-column-layout {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .create-account-container,
+    .account-list {
+        width: 100%;
+    }
+
+    .create-account-container h2,
+    .account-list h2 {
+        font-size: 20px;
+    }
+
+    .create-account-container button.btn-submit {
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+    }
+
+    .account-list {
+        padding: 10px;
+    }
+
+    .account-item {
+        padding: 8px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .account-item h3 {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .account-item button {
+        font-size: 14px;
+        padding: 8px;
+        width: 100%;
+        margin: 5px 0;
+    }
+}
