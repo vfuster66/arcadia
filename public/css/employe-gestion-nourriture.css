@@ -1,0 +1,247 @@
+.main-container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 20px;
+    background-color: #FFFDE7;
+    border-radius: 10px;
+
+}
+
+h1, h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #5D4037;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 36px;
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+/* Mise en page à deux colonnes */
+.two-column-layout {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Colonne de gauche pour le formulaire */
+.left-column {
+    flex: 1;
+    background-color: #A8BCAA;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    color: #212121;
+    display: block;
+    margin-bottom: 5px;
+    margin-left: 20px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="number"],
+textarea,
+select {
+    width: 90%;
+    padding: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    border: 1px solid #BDBDBD;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto 20px auto;
+    box-sizing: border-box;
+}
+
+button.btn-submit {
+    display: block;
+    width: 90%;
+    margin: 20px auto 0;
+    padding: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #FFFDE7;
+    background-color: #0E402D;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.btn-submit:hover {
+    background-color: #F2C31D;
+    color: #0E402D;
+}
+
+/* Colonne de droite pour l'historique */
+.right-column {
+    flex: 1.5;
+    background-color: #A8BCAA;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 700px;
+    overflow-y: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+thead {
+    background-color: #A8BCAA;
+}
+
+thead th {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #212121;
+    padding: 10px;
+    border-bottom: 1px solid #BDBDBD;
+    text-align: left;
+}
+
+tbody tr {
+    background-color: #FFFDE7;
+    border-bottom: 1px solid #BDBDBD;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #F7F7F7;
+}
+
+tbody td {
+    padding: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    color: #212121;
+    text-align: left;
+}
+
+/* Media queries pour tablette (entre 768px et 1024px) */
+@media (max-width: 1024px) {
+    .main-container {
+        padding: 15px;
+        margin: 40px auto;
+    }
+
+    h1 {
+        font-size: 32px;
+        margin-top: 15px;
+    }
+
+    h2 {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .two-column-layout {
+        flex-direction: column;
+    }
+
+    .left-column,
+    .right-column {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .right-column {
+        max-height: none;
+        overflow-y: visible;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="time"],
+    input[type="number"],
+    textarea,
+    select,
+    button.btn-submit {
+        width: 100%;
+    }
+}
+
+/* Media queries pour mobile (moins de 768px) */
+@media (max-width: 768px) {
+    .main-container {
+        padding: 10px;
+        margin: 30px auto;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-top: 10px;
+    }
+
+    h2 {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+
+    .left-column,
+    .right-column {
+        padding: 15px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="time"],
+    input[type="number"],
+    textarea,
+    select,
+    button.btn-submit {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    thead th {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    tbody td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    /* Ajout de la possibilité de défilement horizontal pour le tableau sur mobile */
+    .right-column table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    thead, tbody {
+        display: block;
+    }
+
+    tbody tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+}
