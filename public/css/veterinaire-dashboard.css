@@ -1,0 +1,106 @@
+.main-container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    color: #5D4037;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.dashboard-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.card {
+    flex: 1 1 calc(33.333% - 20px);
+    background-color: #A8BCAA;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #212121;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    color: #0E402D;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    color: #212121;
+}
+
+/* Responsive Design */
+
+/* Pour les tablettes */
+@media (max-width: 1024px) {
+    .card {
+        flex: 1 1 calc(50% - 20px); /* Deux cartes par ligne */
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+}
+
+/* Pour les mobiles */
+@media (max-width: 768px) {
+    .dashboard-cards {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .card {
+        flex: 1 1 100%; /* Une carte par ligne */
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .card h2 {
+        font-size: 20px;
+    }
+
+    .card p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    .card h2 {
+        font-size: 18px;
+    }
+
+    .card p {
+        font-size: 14px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+}

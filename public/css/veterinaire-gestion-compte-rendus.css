@@ -1,0 +1,129 @@
+.main-container {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 20px;
+    background-color: #FFFDE7;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    color: #5D4037;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+form {
+    background-color: #A8BCAA;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    color: #212121;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    border: 1px solid #BDBDBD;
+    border-radius: 5px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+button.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #FFFDE7;
+    background-color: #0E402D;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.btn-submit:hover {
+    background-color: #F2C31D;
+    color: #0E402D;
+}
+
+/* Responsive Design */
+
+/* Pour les tablettes */
+@media (max-width: 768px) {
+    .main-container {
+        max-width: 90%;
+        margin: 40px auto;
+    }
+
+    h1 {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    button.btn-submit {
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+
+/* Pour les mobiles */
+@media (max-width: 480px) {
+    .main-container {
+        max-width: 95%;
+        margin: 30px auto;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    form {
+        padding: 10px;
+    }
+
+    label {
+        font-size: 16px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="number"],
+    textarea,
+    select {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    button.btn-submit {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
