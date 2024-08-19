@@ -1,0 +1,250 @@
+/* /public/css/styles.css */
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/arcadia/public/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/arcadia/public/fonts/Poppins/Poppins-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/arcadia/public/fonts/Poppins/Poppins-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/arcadia/public/fonts/Poppins/Poppins-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('/arcadia/public/fonts/Nunito/Nunito-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('/arcadia/public/fonts/Nunito/Nunito-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('/arcadia/public/fonts/Nunito/Nunito-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('/arcadia/public/fonts/Nunito/Nunito-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* Typographie de base */
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #FFFDE7; 
+    color: #212121;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Titres */
+h1, h2, h3, h4, h5, h6 {
+    color: #2E7D32;
+    margin: 20px 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+/* Liens */
+a {
+    color: #3B8EB4;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #2E7D32;
+}
+
+/* Paragraphes */
+p {
+    margin: 10px 0;
+    font-weight: 400;
+}
+
+/* Listes */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Boutons */
+button, .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0E402D;
+    color: #FFFDE7;
+    text-align: center;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+button:hover, .btn:hover {
+    background-color: #F2C31D;
+    color: #0E402D;
+}
+
+/* Header et Navigation */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #FFFDE7;
+}
+
+.logo img {
+    height: 100px;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 15px;
+}
+
+.main-nav ul li a {
+    padding: 10px 15px;
+    background-color: #2E7D32;
+    color: white;
+    border-radius: 20px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.main-nav ul li a:hover {
+    background-color: #F2C31D;
+}
+
+/* Pied de page */
+footer {
+    background-color: #5D4037;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+}
+
+footer ul {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+footer ul li {
+    list-style: none;
+}
+
+footer ul li a {
+    color: white;
+}
+
+footer ul li a:hover {
+    color: #F2C31D;
+}
+
+/* Responsive Design */
+
+/* Pour les tablettes et les petits écrans */
+@media (max-width: 1024px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .logo img {
+        height: 60px;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .main-nav ul li a {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Pour les téléphones et très petits écrans */
+@media (max-width: 768px) {
+    body {
+        padding: 0 10px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .header-container {
+        padding: 10px;
+    }
+
+    .main-nav ul li a {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    button, .btn {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    footer {
+        padding: 10px;
+    }
+}

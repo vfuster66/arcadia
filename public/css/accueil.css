@@ -1,0 +1,744 @@
+/* /public/css/accueil.css */
+
+/* Styles pour la section Hero */
+#hero {
+    position: relative;
+    width: 100%;
+    height: 836px;
+    background-image: url('/arcadia/public/images/animaux/panda_roux.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    margin-top: 100px;
+}
+
+#hero h1 {
+    font-size: 48px;
+    margin-top: 550px;
+    margin-bottom: 50px;
+    color: #FFFDE7;
+}
+
+#hero .btn-hero {
+    background-color: #0E402D;
+    color: #FFFDE7;
+    padding: 15px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 28px;
+}
+
+#hero .btn-hero:hover {
+    background-color: #F2C31D;
+    color: #0E402D;
+    transform: scale(1.05);
+}
+
+/* Section Présentation */
+#presentation {
+    position: relative;
+    width: 100%;
+    background: #FFFDE7;
+    padding: 50px 120px;
+    box-sizing: border-box;
+    margin-top: 50px;
+}
+
+#presentation .presentation-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #212121;
+    font-weight: bold;
+}
+
+#presentation .presentation-content p {
+    margin-bottom: 20px;
+}
+
+#presentation .presentation-images {
+    display: flex;
+    justify-content: space-around;
+    margin: 100px 0;
+}
+
+#presentation .presentation-images img {
+    width: 30%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Nos Habitats */
+#habitats {
+    background: #FFFFFF;
+    padding: 100px 120px;
+    text-align: center;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+#habitats h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+    color: #212121;
+    margin-bottom: 30px;
+}
+
+.habitat-cards {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.habitat-card {
+    width: 400px;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+}
+
+.habitat-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.habitat-card.jungle .habitat-image {
+    background-image: url('/arcadia/public/images/habitats/jungle.jpg');
+}
+
+.habitat-card.savane .habitat-image {
+    background-image: url('/arcadia/public/images/habitats/savane.jpg');
+}
+
+.habitat-card.marais .habitat-image {
+    background-image: url('/arcadia/public/images/habitats/marais.jpg');
+}
+
+.habitat-card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    color: #FFFFFF;
+    position: absolute;
+    bottom: 150px;
+    right: 30px;
+    margin: 0;
+}
+
+/* Section Nos Services */
+#services {
+    background-color: white;
+    padding: 100px 120px;
+    text-align: center;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+#services h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+    color: #212121;
+    margin-bottom: 50px;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 0px 10px;
+}
+
+.service-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: #FFFDE7;
+    border: 1px solid #BDBDBD;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.service-card2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: white;
+    border: 1px solid #BDBDBD;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.service-card img {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 70px;
+}
+
+.service-card2 img {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 70px;
+}
+
+.service-card p {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #212121;
+    margin: 0;
+    text-align: center;
+    max-width: 80%;
+}
+
+.service-card2 p {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #212121;
+    margin: 0;
+    text-align: center;
+    max-width: 80%;
+}
+
+.service-card:hover, .service-card2:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.service-card p:hover, .service-card2 p:hover {
+    color: #0E402D;
+    transition: color 0.3s ease-in-out;
+}
+
+
+/* Section Nos Animaux */
+#animaux {
+    background: #FFFFFF;
+    padding: 50px 120px 150px 120px;
+    text-align: center;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+#animaux h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+    color: #212121;
+    margin-bottom: 30px;
+}
+
+.animal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.animal-card {
+    background: #FFFFFF;
+    border: 1px solid #BDBDBD;
+    box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.animal-image {
+    width: 100%;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+}
+
+.animal-info {
+    padding: 20px;
+    background: #A06F5E;
+    color: #FFFDE7;
+}
+
+.animal-info2 {
+    padding: 20px;
+    background: #FFFDE7;
+    color: #A06F5E;
+}
+
+.animal-info h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #FFFFFF;
+}
+
+.animal-info2 h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #A06F5E;
+}
+
+.animal-info p {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.animal-info2 p {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/* Section Avis */
+#avis-carousel {
+    text-align: center;
+    position: relative;
+    padding: 200px 120px;
+    text-align: center;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.carousel-container {
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.avis-carousel {
+    display: flex;
+    transition: transform 1.5s ease-in-out; 
+}
+
+.avis-card {
+    flex: 0 0 30%;
+    height: 200px;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    color: white;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin: 0 20px;
+    position: relative;
+}
+
+.icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    background: url('/arcadia/public/images/icones/empreinte.svg') no-repeat center center;
+    background-size: contain;
+}
+
+
+.green-card {
+    background-color: #0E402D;
+}
+
+.brown-card {
+    background-color: #5D4037;
+}
+
+.avis-card h3 {
+    margin-bottom: 10px;
+    color: white;
+}
+
+.avis-card p {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.map {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.map button {
+    width: 15px;
+    height: 15px;
+    background-color: #5D4037;
+    border: none;
+    border-radius: 100%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.map button.active {
+    background-color: #0E402D;
+}
+
+
+.submit-avis {
+    margin-top: 30px;
+}
+
+.submit-avis button {
+    background-color: #0E402D;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-avis button:hover {
+    background-color: #F2C31D;
+    transform: scale(1.05);
+    color: #0E402D;
+}
+
+/* Section Horaires */
+#horaires {
+    background-color: white;
+    padding: 80px 120px;
+    text-align: center;
+    width: 1200px;
+    margin: 0 auto;
+    border: 1px solid #BDBDBD;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    margin-bottom: 50px;
+}
+
+#horaires h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+    color: #212121;
+    margin-bottom: 50px;
+}
+
+#horaires ul {
+    list-style: none;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    font-size: 24px;
+    color: #212121;
+}
+
+#horaires ul li {
+    margin-bottom: 5px;
+}
+
+.learn-more-link {
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #0E402D;
+    text-decoration: none;
+    margin-top: 20px;
+    float: right;
+    padding-right: 20px;
+}
+
+.learn-more-link:hover {
+    color: #F2C31D;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #A8BCAA;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #BDBDBD;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #5D4037;
+    text-align: center;
+}
+
+.modal .form-group {
+    margin-bottom: 20px;
+}
+
+.modal .form-group label {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #212121;
+    margin-bottom: 5px;
+}
+
+.modal .form-group input, .modal .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    border: 1px solid #BDBDBD;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.modal .btn-submit {
+    align-self: flex-end;
+    background-color: #0E402D;
+    color: #FFFDE7;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    text-align: center;
+    display: block;
+    margin: 20px auto 0 auto;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modal .btn-submit:hover {
+    background-color: #F2C31D;
+    transform: scale(1.05);
+    color: #0E402D;
+}
+
+/* Ajouter ci-dessous les media queries pour tablette (entre 768px et 1024px) */
+@media (max-width: 1024px) {
+    /* Ajustement du hero */
+    #hero {
+        height: 600px;
+    }
+
+    #hero h1 {
+        font-size: 36px;
+        margin-top: 400px;
+        margin-bottom: 30px;
+    }
+
+    #hero .btn-hero {
+        font-size: 24px;
+        padding: 10px 20px;
+    }
+
+    /* Présentation */
+    #presentation {
+        padding: 40px 60px;
+    }
+
+    #presentation .presentation-images {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #presentation .presentation-images img {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    /* Habitats */
+    #habitats {
+        width: 100%;
+        padding: 50px 60px;
+    }
+
+    .habitat-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .habitat-card {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+
+    /* Services */
+    #services {
+        width: 100%;
+        padding: 50px 60px;
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* Animaux */
+    #animaux {
+        width: 100%;
+        padding: 50px 60px;
+    }
+
+    .animal-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* Avis */
+    #avis-carousel {
+        padding: 50px 60px;
+        width: 100%;
+    }
+
+    .avis-card {
+        flex: 0 0 80%;
+        height: 150px;
+        margin: 0 10px;
+    }
+
+    /* Horaires */
+    #horaires {
+        width: 100%;
+        padding: 50px 60px;
+    }
+}
+
+/* Media queries pour mobile (moins de 768px) */
+@media (max-width: 768px) {
+    /* Ajustement du hero */
+    #hero {
+        height: 400px;
+    }
+
+    #hero h1 {
+        font-size: 28px;
+        margin-top: 300px;
+        margin-bottom: 20px;
+    }
+
+    #hero .btn-hero {
+        font-size: 20px;
+        padding: 8px 16px;
+    }
+
+    /* Présentation */
+    #presentation {
+        padding: 30px 20px;
+    }
+
+    #presentation .presentation-images img {
+        width: 100%;
+    }
+
+    /* Habitats */
+    #habitats {
+        width: 100%;
+        padding: 30px 20px;
+    }
+
+    .habitat-card {
+        width: 100%;
+        height: auto;
+    }
+
+    .habitat-card h3 {
+        bottom: 50px;
+    }
+
+    /* Services */
+    #services {
+        width: 100%;
+        padding: 30px 20px;
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .service-card img,
+    .service-card2 img {
+        width: 80%;
+        height: auto;
+        margin-bottom: 30px;
+    }
+
+    /* Animaux */
+    #animaux {
+        width: 100%;
+        padding: 30px 20px;
+    }
+
+    .animal-card {
+        margin-bottom: 20px;
+    }
+
+    /* Avis */
+    #avis-carousel {
+        padding: 30px 20px;
+        width: 100%;
+    }
+
+    .avis-card {
+        flex: 0 0 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    /* Horaires */
+    #horaires {
+        width: 100%;
+        padding: 30px 20px;
+    }
+}
