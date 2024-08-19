@@ -1,0 +1,120 @@
+/* Styles globaux */
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #FFFDE7;
+    color: #212121;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container principal */
+.main-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+/* Titre principal */
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    color: #5D4037;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+/* Grille pour les cartes des habitats */
+.habitats-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Styles pour les cartes d'habitat */
+.habitat-card {
+    flex: 1 1 30%;
+    background-color: #A8BCAA;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    text-align: center;
+    padding: 20px;
+}
+
+.habitat-card:hover {
+    transform: scale(1.05);
+}
+
+.habitat-card img {
+    width: 100%;
+    height: 250px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    object-fit: cover;
+}
+
+.habitat-card h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    color: #5D4037;
+    margin-bottom: 10px;
+}
+
+.habitat-card p {
+    font-size: 16px;
+    color: #212121;
+}
+
+/* Media queries pour tablette (entre 768px et 1024px) */
+@media (max-width: 1024px) {
+    .main-container {
+        padding: 20px 15px; /* Réduire les marges internes */
+    }
+
+    .habitats-grid {
+        flex-direction: column; /* Disposer les cartes en colonne sur tablettes */
+        gap: 30px;
+    }
+
+    .habitat-card {
+        flex: 1 1 100%; /* Les cartes prennent toute la largeur */
+        max-width: 100%;
+    }
+}
+
+/* Media queries pour mobile (moins de 768px) */
+@media (max-width: 768px) {
+    .main-container {
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 28px; /* Réduire la taille du titre principal */
+        margin-bottom: 30px;
+    }
+
+    .habitats-grid {
+        flex-direction: column; /* Disposer les cartes en colonne sur mobiles */
+        gap: 20px;
+    }
+
+    .habitat-card {
+        flex: 1 1 100%; /* Les cartes prennent toute la largeur */
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .habitat-card img {
+        height: 200px; /* Réduire la hauteur des images pour les petits écrans */
+    }
+
+    .habitat-card h2 {
+        font-size: 20px; /* Réduire la taille du texte */
+    }
+
+    .habitat-card p {
+        font-size: 14px; /* Réduire la taille du texte */
+    }
+}

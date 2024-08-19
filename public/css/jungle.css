@@ -1,0 +1,244 @@
+/* Styles globaux */
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #FFFDE7;
+    color: #212121;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container principal */
+.main-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+/* Titre principal */
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    color: #5D4037;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+/* Section description de la jungle */
+#description-jungle p {
+    font-size: 18px;
+    color: #212121;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Galerie de photos de la jungle */
+.photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.photo-gallery img {
+    width: 100%;
+    max-width: calc(33.333% - 20px);
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Grille pour les cartes */
+.animal-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* Styles pour les cartes */
+.animal-card {
+    flex: 1 1 calc(33.333% - 80px);
+    max-width: calc(33.333% - 40px);
+    perspective: 1000px;
+    margin-bottom: 80px;
+}
+
+.animal-card:nth-child(4) {
+    flex: 1 1 calc(33.333% - 80px);
+    margin-left: calc(33.333% / 2 - 40px);
+    margin-bottom: 30px;
+}
+
+.animal-card:nth-child(5) {
+    flex: 1 1 calc(33.333% - 80px);
+    margin-right: calc(33.333% / 2 - 40px);
+    margin-bottom: 30px;
+}
+
+.animal-card-inner {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    transform-origin: center;
+}
+
+.animal-card:hover .animal-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Styles pour l'avant et l'arrière des cartes */
+.animal-card-front, .animal-card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.6s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+
+}
+
+/* Avant de la carte */
+.animal-card-front {
+    background-color: #A8BCAA;
+    z-index: 1;
+}
+
+/* Image sur la face avant */
+.animal-card-front img {
+    width: 180px;
+    height: 180px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    object-fit: cover;
+}
+
+/* Texte sur la face avant */
+.animal-card-front h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    color: #5D4037;
+    margin-bottom: 10px;
+}
+
+.animal-card-front p {
+    font-size: 18px;
+    color: #212121;
+}
+
+/* Arrière de la carte */
+.animal-card-back {
+    background-color: #5D4037;
+    color: #FFFDE7;
+    transform: rotateY(180deg);
+    z-index: 2;
+    padding: 10px;
+}
+
+/* Texte sur la face arrière */
+.animal-card-back h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #FFFDE7;
+}
+
+.animal-card-back p {
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Media queries pour tablette (entre 768px et 1024px) */
+@media (max-width: 1024px) {
+    .main-container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 32px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .photo-gallery img {
+        max-width: calc(50% - 10px); /* Deux images par ligne */
+    }
+
+    .animal-cards {
+        gap: 30px;
+    }
+
+    .animal-card {
+        flex: 1 1 calc(50% - 30px); /* Deux cartes par ligne */
+        max-width: calc(50% - 20px);
+    }
+
+    .animal-card:nth-child(4), .animal-card:nth-child(5) {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+/* Media queries pour mobile (moins de 768px) */
+@media (max-width: 768px) {
+    .main-container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .photo-gallery {
+        gap: 10px;
+    }
+
+    .photo-gallery img {
+        max-width: 100%; /* Une seule image par ligne */
+    }
+
+    .animal-cards {
+        gap: 20px;
+    }
+
+    .animal-card {
+        flex: 1 1 100%; /* Une carte par ligne */
+        max-width: 100%;
+    }
+
+    .animal-card:nth-child(4), .animal-card:nth-child(5) {
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .animal-card-front img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .animal-card-front h3 {
+        font-size: 20px;
+    }
+
+    .animal-card-front p,
+    .animal-card-back p {
+        font-size: 16px;
+    }
+
+    .animal-card-back h4 {
+        font-size: 18px;
+    }
+}

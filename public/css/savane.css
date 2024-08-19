@@ -1,0 +1,404 @@
+/* Styles pour la page Savane */
+
+/* Container principal */
+.main-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+/* Titre principal */
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    color: #5D4037;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+/* Description de la savane */
+#description-savane p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+/* Galerie de photos */
+#photos-savane {
+    margin-bottom: 50px;
+}
+
+#photos-savane h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    color: #5D4037;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.photo-gallery img {
+    width: calc(33.333% - 20px);
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+}
+
+/* Section des animaux */
+#savane-animaux h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    color: #5D4037;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Grille pour les cartes */
+.animal-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* Styles pour les cartes */
+.animal-card {
+    flex: 1 1 calc(33.333% - 80px);
+    max-width: calc(33.333% - 40px);
+    perspective: 1000px;
+    margin-bottom: 80px;
+}
+
+.animal-card:nth-child(4) {
+    flex: 1 1 calc(33.333% - 80px);
+    margin-left: calc(33.333% / 2 - 40px);
+    margin-bottom: 30px;
+}
+
+.animal-card:nth-child(5) {
+    flex: 1 1 calc(33.333% - 80px);
+    margin-right: calc(33.333% / 2 - 40px);
+    margin-bottom: 30px;
+}
+
+.animal-card-inner {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    transform-origin: center;
+}
+
+.animal-card:hover .animal-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Styles pour l'avant et l'arrière des cartes */
+.animal-card-front, .animal-card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.6s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+
+}
+
+/* Avant de la carte */
+.animal-card-front {
+    background-color: #A8BCAA;
+    z-index: 1;
+}
+
+/* Image sur la face avant */
+.animal-card-front img {
+    width: 180px;
+    height: 180px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    object-fit: cover;
+}
+
+/* Texte sur la face avant */
+.animal-card-front h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    color: #5D4037;
+    margin-bottom: 10px;
+}
+
+.animal-card-front p {
+    font-size: 18px;
+    color: #212121;
+}
+
+/* Arrière de la carte */
+.animal-card-back {
+    background-color: #5D4037;
+    color: #FFFDE7;
+    transform: rotateY(180deg);
+    z-index: 2;
+    padding: 10px;
+}
+
+/* Texte sur la face arrière */
+.animal-card-back h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #FFFDE7;
+}
+
+.animal-card-back p {
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Styles pour la page Savane */
+
+/* Container principal */
+.main-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+/* Titre principal */
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    color: #5D4037;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+/* Description de la savane */
+#description-savane p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+/* Galerie de photos */
+#photos-savane {
+    margin-bottom: 50px;
+}
+
+#photos-savane h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    color: #5D4037;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.photo-gallery img {
+    width: calc(33.333% - 20px);
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+}
+
+/* Section des animaux */
+#savane-animaux h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    color: #5D4037;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Grille pour les cartes */
+.animal-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* Styles pour les cartes */
+.animal-card {
+    flex: 1 1 calc(33.333% - 80px);
+    max-width: calc(33.333% - 40px);
+    perspective: 1000px;
+    margin-bottom: 80px;
+}
+
+.animal-card:nth-child(4) {
+    flex: 1 1 calc(33.333% - 80px);
+    margin-left: calc(33.333% / 2 - 40px);
+    margin-bottom: 30px;
+}
+
+.animal-card:nth-child(5) {
+    flex: 1 1 calc(33.333% - 80px);
+    margin-right: calc(33.333% / 2 - 40px);
+    margin-bottom: 30px;
+}
+
+.animal-card-inner {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    transform-origin: center;
+}
+
+.animal-card:hover .animal-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Styles pour l'avant et l'arrière des cartes */
+.animal-card-front, .animal-card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.6s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+/* Avant de la carte */
+.animal-card-front {
+    background-color: #A8BCAA;
+    z-index: 1;
+}
+
+/* Image sur la face avant */
+.animal-card-front img {
+    width: 180px;
+    height: 180px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    object-fit: cover;
+}
+
+/* Texte sur la face avant */
+.animal-card-front h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    color: #5D4037;
+    margin-bottom: 10px;
+}
+
+.animal-card-front p {
+    font-size: 18px;
+    color: #212121;
+}
+
+/* Arrière de la carte */
+.animal-card-back {
+    background-color: #5D4037;
+    color: #FFFDE7;
+    transform: rotateY(180deg);
+    z-index: 2;
+    padding: 10px;
+}
+
+/* Texte sur la face arrière */
+.animal-card-back h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #FFFDE7;
+}
+
+.animal-card-back p {
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .photo-gallery img {
+        width: calc(50% - 20px);
+    }
+
+    .animal-cards {
+        gap: 20px;
+    }
+
+    .animal-card {
+        flex: 1 1 calc(50% - 40px);
+        max-width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    h1, h2 {
+        font-size: 28px;
+    }
+
+    .photo-gallery img {
+        width: calc(100% - 20px);
+    }
+
+    .animal-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1, h2 {
+        font-size: 24px;
+    }
+
+    .photo-gallery img {
+        width: calc(100% - 20px);
+    }
+
+    .animal-card-front img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .animal-card-front h3 {
+        font-size: 20px;
+    }
+
+    .animal-card-front p,
+    .animal-card-back p {
+        font-size: 14px;
+    }
+
+    .animal-card-back h4 {
+        font-size: 18px;
+    }
+}
