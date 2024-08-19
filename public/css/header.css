@@ -1,0 +1,107 @@
+/* Style pour le conteneur du header */
+.header-container {
+    position: absolute;
+    width: 1440px;
+    height: 100px;
+    left: 0px;
+    top: 0px;
+    background-color: #FFFDE7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 100px;
+}
+
+/* Style pour le logo */
+.logo img {
+    height: 150px;
+}
+
+/* Style pour la navigation principale */
+.main-nav ul {
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.main-nav ul li {
+    flex: 0 0 150px;
+}
+
+.main-nav ul li a {
+    display: block; 
+    padding: 5px 0;
+    width: 150px; 
+    text-align: center;
+    background-color: #0E402D;
+    color: #FFFDE7;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.main-nav ul li a:hover {
+    background-color: #F2C31D;
+    color: #0E402D;
+    border: 1px solid #0E402D;
+}
+
+/* Media queries pour tablette (entre 768px et 1024px) */
+@media (max-width: 1024px) {
+    .header-container {
+        width: 100%;
+        height: auto;
+        padding: 0 50px;
+        position: relative;
+    }
+
+    .logo img {
+        height: 100px; /* Réduire la taille du logo pour les tablettes */
+    }
+
+    .main-nav ul {
+        gap: 20px; /* Réduire l'espacement entre les éléments de la navigation */
+    }
+
+    .main-nav ul li {
+        flex: 0 0 120px; /* Réduire la largeur des éléments de navigation */
+    }
+
+    .main-nav ul li a {
+        width: 120px; /* Ajuster la largeur du lien pour correspondre au nouvel espace */
+    }
+}
+
+/* Media queries pour mobile (moins de 768px) */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        padding: 10px 20px;
+        height: auto;
+        align-items: center;
+    }
+
+    .logo img {
+        height: 80px; /* Réduire encore la taille du logo pour les petits écrans */
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .main-nav ul li {
+        flex: 1 1 auto;
+        width: 100%;
+    }
+
+    .main-nav ul li a {
+        width: 100%; /* Le lien prend toute la largeur disponible */
+        padding: 10px;
+        text-align: center;
+    }
+}

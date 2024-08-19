@@ -1,0 +1,173 @@
+/* /public/css/footer.css */
+
+/* Style global du footer */
+footer {
+    width: 100%; /* Largeur du footer */
+    height: 200px; /* Hauteur du footer */
+    left: 0px; /* Alignement à gauche */
+    background-color: #5D4037; /* Couleur de fond brune */
+    color: #FFFDE7;
+    padding: 20px;
+}
+
+/* Conteneur des mentions légales */
+.footer-links {
+    display: flex; /* Aligner les liens sur une même ligne */
+    justify-content: space-between; /* Répartir les liens sur toute la largeur */
+    width: calc(100% - 200px); /* Réduire la largeur de 200px pour les marges */
+    margin: 0 auto 20px auto; /* Centre horizontalement le container et ajoute une marge en bas */
+    padding: 0 100px; /* Ajouter une marge de 100px à droite et à gauche */
+}
+
+.footer-links a {
+    color: #FFFDE7;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    color: #F2C31D; /* Couleur jaune pâle au survol */
+}
+
+/* Conteneur du contact */
+.footer-contact {
+    text-align: center; /* Centrer le texte */
+    margin-bottom: 20px; /* Espace en bas du container */
+    font-size: 18px;
+}
+
+.footer-contact p {
+    margin: 0;
+}
+
+.footer-contact a {
+    color: #FFFDE7;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-contact a:hover {
+    color: #F2C31D; /* Couleur jaune pâle au survol */
+}
+
+/* Conteneur pour aligner le bouton et les réseaux sociaux */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between; /* Aligne le bouton à gauche et les réseaux sociaux à droite */
+    align-items: center;
+    width: calc(100% - 200px); /* Largeur du container ajustée pour inclure les marges */
+    margin: 0 auto; /* Centre horizontalement le container */
+    padding: 0 100px; /* Ajouter une marge de 100px à droite et à gauche */
+}
+
+/* Bouton de contact dans le footer */
+.footer-button .btn {
+    padding: 5px 30px;
+    background-color: #FFFDE7;
+    color: #5D4037;
+    border-radius: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.footer-button .btn:hover {
+    background-color: #F2C31D;
+    transform: scale(1.05);
+}
+
+/* Conteneur des réseaux sociaux */
+.footer-social {
+    display: flex; /* Aligner les icônes sur une même ligne */
+    justify-content: flex-end; /* Placer les icônes à droite */
+}
+
+.footer-social a {
+    margin-left: 30px; /* Espacement entre les icônes */
+}
+
+.footer-social img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Media queries pour tablette (entre 768px et 1024px) */
+@media (max-width: 1024px) {
+    footer {
+        height: auto; /* Permettre au footer de s'ajuster en hauteur en fonction du contenu */
+        padding: 20px 10px;
+    }
+
+    .footer-links {
+        flex-direction: column; /* Empiler les liens verticalement */
+        align-items: center; /* Centrer les liens */
+        width: 100%; /* Prendre toute la largeur */
+        padding: 0; /* Enlever les marges latérales */
+    }
+
+    .footer-links a {
+        margin-bottom: 10px; /* Ajouter un espacement entre les liens */
+    }
+
+    .footer-contact {
+        font-size: 16px; /* Réduire la taille du texte */
+    }
+
+    .footer-bottom {
+        flex-direction: column; /* Empiler le bouton et les réseaux sociaux */
+        align-items: center; /* Centrer les éléments */
+        padding: 0; /* Enlever les marges latérales */
+    }
+
+    .footer-button .btn {
+        margin-bottom: 20px; /* Ajouter un espacement sous le bouton */
+    }
+
+    .footer-social {
+        justify-content: center; /* Centrer les icônes de réseaux sociaux */
+        margin-top: 20px;
+    }
+
+    .footer-social a {
+        margin-left: 15px; /* Réduire l'espacement entre les icônes */
+    }
+}
+
+/* Media queries pour mobile (moins de 768px) */
+@media (max-width: 768px) {
+    footer {
+        padding: 15px 5px; /* Réduire le padding du footer */
+    }
+
+    .footer-links {
+        align-items: flex-start; /* Aligner les liens à gauche */
+        text-align: center;
+    }
+
+    .footer-links a {
+        font-size: 12px; /* Réduire la taille du texte des liens */
+        margin-bottom: 8px; /* Ajuster l'espacement entre les liens */
+    }
+
+    .footer-contact {
+        font-size: 14px; /* Réduire la taille du texte */
+        margin-bottom: 15px; /* Ajuster l'espacement en bas */
+    }
+
+    .footer-bottom {
+        flex-direction: column; /* Empiler le bouton et les réseaux sociaux */
+        align-items: center; /* Centrer les éléments */
+        padding: 0;
+    }
+
+    .footer-button .btn {
+        padding: 5px 20px; /* Réduire la taille du bouton */
+        font-size: 16px; /* Ajuster la taille du texte */
+        margin-bottom: 15px;
+    }
+
+    .footer-social a {
+        margin-left: 10px; /* Réduire l'espacement entre les icônes */
+    }
+}
