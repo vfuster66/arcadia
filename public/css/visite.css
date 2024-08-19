@@ -1,0 +1,174 @@
+/* Styles spécifiques pour la page Visite Guidée */
+
+.main-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    color: #5D4037;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#visite-presentation p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    color: #212121;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+#visite-photos .photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+#visite-photos img {
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#visite-details {
+    background-color: #A8BCAA;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#visite-details h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    color: #5D4037;
+    margin-bottom: 20px;
+}
+
+#visite-details p, #visite-details ul {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    color: #212121;
+    margin-bottom: 20px;
+}
+
+#visite-details ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+#visite-details ul li {
+    margin-bottom: 10px;
+}
+
+.bubble {
+    position: absolute;
+    background-color: #A06F5E;
+    border-radius: 50%;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #212121;
+    text-align: center;
+    width: 200px;
+    height: 200px;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.bubble:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+}
+
+/* Positioning the bubbles on the page */
+.bubble-savane-lions { top: 20%; left: 5%; }
+.bubble-savane-zebres { top: 50%; left: 10%; }
+.bubble-jungle-gorilles { top: 20%; right: 5%; }
+.bubble-jungle-ara { bottom: 2%; right: 2%; }
+.bubble-marais-crocodiles { bottom: 2%; left: 2%; }
+.bubble-marais-salamandres { bottom: 25%; right: 10%; }
+
+/* Responsive Design */
+
+/* Pour les tablettes */
+@media (max-width: 768px) {
+    .main-container {
+        max-width: 90%;
+        margin: 40px auto;
+    }
+
+    h1 {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+
+    #visite-photos img {
+        width: calc(50% - 20px);
+        height: auto;
+    }
+
+    #visite-details {
+        padding: 20px;
+    }
+
+    #visite-details h2 {
+        font-size: 24px;
+    }
+
+    .bubble {
+        width: 150px;
+        height: 150px;
+        font-size: 12px;
+    }
+}
+
+/* Pour les mobiles */
+@media (max-width: 480px) {
+    .main-container {
+        max-width: 95%;
+        margin: 30px auto;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    #visite-photos img {
+        width: 100%;
+        height: auto;
+    }
+
+    #visite-details {
+        padding: 15px;
+    }
+
+    #visite-details h2 {
+        font-size: 20px;
+    }
+
+    #visite-details p, #visite-details ul {
+        font-size: 16px;
+    }
+
+    .bubble {
+        width: 120px;
+        height: 120px;
+        font-size: 10px;
+    }
+}

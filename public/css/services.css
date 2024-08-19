@@ -1,0 +1,257 @@
+/* /public/css/services.css */
+
+.main-container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+#services-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#services-title h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 42px;
+    color: #5D4037;
+}
+
+#services-title p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    color: #212121;
+    margin-top: 10px;
+}
+
+#services-detail {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+.service {
+    display: flex;
+    align-items: center;
+    background-color: #A8BCAA;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.service-image {
+    flex: 0 0 150px;
+    text-align: center;
+}
+
+.service-image img {
+    width: 100px;
+    height: auto;
+}
+
+.service-info {
+    flex: 1;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-info h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    color: #5D4037;
+    margin-bottom: 10px;
+}
+
+.service-info p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    color: #212121;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.service-info strong {
+    font-weight: bold;
+}
+
+.learn-more-link {
+    align-self: flex-end; /* Aligne le lien à droite de son container */
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #0E402D;
+    text-decoration: none;
+    margin-top: 20px;
+    padding-right: 20px;
+}
+
+.learn-more-link:hover {
+    color: #F2C31D;
+}
+
+/* /public/css/services.css */
+
+.main-container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+#services-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#services-title h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 42px;
+    color: #5D4037;
+}
+
+#services-title p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    color: #212121;
+    margin-top: 10px;
+}
+
+#services-detail {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+.service {
+    display: flex;
+    align-items: center;
+    background-color: #A8BCAA;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.service-image {
+    flex: 0 0 150px;
+    text-align: center;
+}
+
+.service-image img {
+    width: 100px;
+    height: auto;
+}
+
+.service-info {
+    flex: 1;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-info h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    color: #5D4037;
+    margin-bottom: 10px;
+}
+
+.service-info p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    color: #212121;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.service-info strong {
+    font-weight: bold;
+}
+
+.learn-more-link {
+    align-self: flex-end; /* Aligne le lien à droite de son container */
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #0E402D;
+    text-decoration: none;
+    margin-top: 20px;
+    padding-right: 20px;
+}
+
+.learn-more-link:hover {
+    color: #F2C31D;
+}
+
+/* Responsive Design */
+
+/* Pour les tablettes et les petits écrans */
+@media (max-width: 1024px) {
+    #services-title h1 {
+        font-size: 36px;
+    }
+
+    #services-detail {
+        gap: 30px;
+    }
+
+    .service {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .service-image {
+        margin-bottom: 20px;
+    }
+
+    .service-info {
+        margin-left: 0;
+        align-items: center;
+    }
+
+    .learn-more-link {
+        margin-top: 10px;
+    }
+}
+
+/* Pour les téléphones et très petits écrans */
+@media (max-width: 768px) {
+    #services-title h1 {
+        font-size: 28px;
+    }
+
+    #services-title p {
+        font-size: 16px;
+    }
+
+    .service-info h2 {
+        font-size: 24px;
+    }
+
+    .service-info p {
+        font-size: 16px;
+    }
+
+    .learn-more-link {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    #services-title h1 {
+        font-size: 24px;
+    }
+
+    .service-info h2 {
+        font-size: 20px;
+    }
+
+    .service-info p {
+        font-size: 14px;
+    }
+
+    .learn-more-link {
+        font-size: 16px;
+    }
+}
