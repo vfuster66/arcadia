@@ -1,0 +1,19 @@
+{
+    "name": "virginie/arcadia",
+    "description": "zoo fictif",
+    "require-dev": {
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Virginie\\Arcadia\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "vfuster66",
+            "email": "vfuster-@student.42perpignan.fr"
+        }
+    ],
+    "require": {}
+}
