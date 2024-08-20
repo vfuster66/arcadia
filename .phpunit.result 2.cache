@@ -1,0 +1,1 @@
+{"version":1,"defects":{"DatabaseTest::testConnection":8,"DatabaseTest::testInsertIntoDatabase":8,"DatabaseTest::testSelectFromDatabase":8},"times":[]}
