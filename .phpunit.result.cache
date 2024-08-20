@@ -1,1 +1,1 @@
-{"version":1,"defects":{"DatabaseTest::testConnection":8,"DatabaseTest::testInsertIntoDatabase":8,"DatabaseTest::testSelectFromDatabase":8},"times":[]}
+{"version":1,"defects":{"DatabaseTest::testConnection":8,"DatabaseTest::testInsertIntoDatabase":8,"DatabaseTest::testSelectFromDatabase":8},"times":{"DatabaseTest::testConnection":0.006,"DatabaseTest::testInsertIntoDatabase":0.008,"DatabaseTest::testSelectFromDatabase":0.002}}
