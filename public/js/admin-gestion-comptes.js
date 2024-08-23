@@ -1,12 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const filterName = document.getElementById('filter-name');
-    const filterEmail = document.getElementById('filter-email');
+    const filterSearch = document.getElementById('filter-search');
     const filterRole = document.getElementById('filter-role');
     const accountItems = document.querySelectorAll('.account-item');
 
     function filterAccounts() {
-        const nameValue = filterName.value.toLowerCase();
-        const emailValue = filterEmail.value.toLowerCase();
+        const searchValue = filterSearch.value.toLowerCase();
         const roleValue = filterRole.value.toLowerCase();
 
         accountItems.forEach(item => {
@@ -15,9 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const role = item.getAttribute('data-role').toLowerCase();
 
             if (
-                (name.includes(nameValue) || email.includes(nameValue)) && 
-                (email.includes(emailValue)) && 
-                (role.includes(roleValue) || !roleValue)
+                (name.includes(searchValue) || email.includes(searchValue)) && 
+                (role.includes(roleValue) || roleValue === '')
             ) {
                 item.style.display = 'flex';
             } else {
@@ -26,8 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    filterName.addEventListener('input', filterAccounts);
-    filterEmail.addEventListener('input', filterAccounts);
+    filterSearch.addEventListener('input', filterAccounts);
     filterRole.addEventListener('change', filterAccounts);
 });
 
@@ -43,44 +39,49 @@ document.addEventListener('DOMContentLoaded', function() {
     editBtns.forEach(function(btn) {
         btn.onclick = function() {
             var accountItem = this.parentElement;
-            var name = accountItem.getAttribute("data-name");
+            var userId = accountItem.getAttribute("data-id"); // Récupérer l'ID de l'utilisateur
+            var username = accountItem.getAttribute("data-name");
             var email = accountItem.getAttribute("data-email");
             var role = accountItem.getAttribute("data-role");
+            var nom = accountItem.getAttribute("data-nom");
+            var prenom = accountItem.getAttribute("data-prenom");
 
-            document.getElementById("edit-name").value = name;
+            document.getElementById("edit-user-id").value = userId; // Remplir le champ caché avec l'ID de l'utilisateur
+            document.getElementById("edit-name").value = username;
             document.getElementById("edit-email").value = email;
             document.getElementById("edit-role").value = role;
+            document.getElementById("edit-nom").value = nom;
+            document.getElementById("edit-prenom").value = prenom;
 
             editModal.style.display = "block";
-        }
+        };
     });
 
     // Ouvrir le modal de suppression
     deleteBtns.forEach(function(btn) {
         btn.onclick = function() {
             var accountItem = this.parentElement;
-            var accountId = accountItem.getAttribute("data-id"); // Si vous avez un ID spécifique pour chaque compte
-
+            var accountId = accountItem.getAttribute("data-id");
+    
             document.getElementById("delete-account-id").value = accountId; // Remplir l'ID dans le formulaire de suppression
-
             deleteModal.style.display = "block";
         }
-    });
+    });    
 
     // Fermer le modal de modification
     spanClose[0].onclick = function() {
         editModal.style.display = "none";
-    }
+    };
 
     // Fermer le modal de suppression
     spanClose[1].onclick = function() {
         deleteModal.style.display = "none";
-    }
+    };
 
     // Annuler la suppression
     cancelBtn.onclick = function() {
         deleteModal.style.display = "none";
-    }
+    };
 
     // Fermer les modals si on clique en dehors du contenu
     window.onclick = function(event) {
@@ -90,5 +91,5 @@ document.addEventListener('DOMContentLoaded', function() {
         if (event.target == deleteModal) {
             deleteModal.style.display = "none";
         }
-    }
+    };
 });

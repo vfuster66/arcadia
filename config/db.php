@@ -44,7 +44,6 @@ $dsn = sprintf(
 try {
     $pdo = new PDO($dsn, $dbUser, $dbPassword);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connexion réussie à la base de données PostgreSQL!";
 } catch (PDOException $e) {
     exit('Échec de la connexion : ' . $e->getMessage());
 }

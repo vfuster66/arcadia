@@ -1,6 +1,7 @@
-<!-- /app/views/partials/footer.php -->
+<?php 
+session_start();
 
-<?php if (!isset($_SESSION['username'])): ?>
+if (!isset($_SESSION['email'])): ?>
 <link rel="stylesheet" href="/arcadia/public/css/footer.css"> <!-- Style spécifique au footer -->
 
 <footer>
@@ -31,4 +32,3 @@
 
 </body>
 </html>
-

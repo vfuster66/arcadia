@@ -15,5 +15,7 @@
             "email": "vfuster-@student.42perpignan.fr"
         }
     ],
-    "require": {}
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
 }

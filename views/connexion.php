@@ -1,16 +1,19 @@
 <?php 
 $title = "Connexion"; 
-include 'partials/header.php'; 
+include '../views/partials/header.php'; 
 ?>
-<link rel="stylesheet" href="/arcadia/public/css/connexion.css"> <!-- Style spécifique pour la connexion -->
+<link rel="stylesheet" href="/arcadia/public/css/connexion.css">
 
 <div class="main-container">
     <section id="login">
         <h2>Connexion</h2>
+        <?php if(isset($error)): ?>
+            <p style="color:red;"><?php echo $error; ?></p>
+        <?php endif; ?>
         <form action="/arcadia/controllers/login.php" method="POST">
             <div class="form-group">
-                <label for="username">Nom d'utilisateur</label>
-                <input type="text" id="username" name="username" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
             </div>
             <div class="form-group">
                 <label for="password">Mot de passe</label>
@@ -22,5 +25,5 @@ include 'partials/header.php';
 </div>
 
 <?php 
-include 'partials/footer.php'; 
+include '../views/partials/footer.php'; 
 ?>
