@@ -1,3 +1,17 @@
+
+
+<?php
+session_start();
+?>
+
+
+<?php 
+require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../controllers/HorairesController.php'; 
+
+$horairesController = new HorairesController($pdo);
+?>
+
 <?php 
 $title = "Accueil"; 
 include 'partials/header.php'; 
@@ -147,15 +161,9 @@ include 'partials/header.php';
 
     <section id="horaires">
         <h2>Horaires</h2>
-        <ul>
-            <li>Lundi : 10h - 18h</li>
-            <li>Mardi : 10h - 18h</li>
-            <li>Mercredi : 9h - 19h</li>
-            <li>Jeudi : 10h - 18h</li>
-            <li>Vendredi : 10h - 18h</li>
-            <li>Samedi : 9h - 20h</li>
-            <li>Dimanche : 9h - 20h</li>
-        </ul>
+        <?php 
+            $horairesController->afficherHoraires(); 
+        ?>
     </section>
 
 </div>
@@ -177,7 +185,6 @@ include 'partials/header.php';
         </form>
     </div>
 </div>
-
 
 <!-- Inclusion du script carousel.js -->
 <script src="/arcadia/public/js/carousel.js"></script>

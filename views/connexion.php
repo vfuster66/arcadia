@@ -7,10 +7,14 @@ include 'partials/header.php';
 <div class="main-container">
     <section id="login">
         <h2>Connexion</h2>
+        <?php if (isset($_SESSION['login_error'])): ?>
+            <p style="color:red;"><?php echo htmlspecialchars($_SESSION['login_error']); ?></p>
+            <?php unset($_SESSION['login_error']); // Effacer l'erreur après l'affichage ?>
+        <?php endif; ?>
         <form action="/arcadia/controllers/login.php" method="POST">
             <div class="form-group">
-                <label for="username">Nom d'utilisateur</label>
-                <input type="text" id="username" name="username" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
             </div>
             <div class="form-group">
                 <label for="password">Mot de passe</label>

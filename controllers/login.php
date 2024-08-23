@@ -1,53 +1,28 @@
 <?php
+require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../models/User.php';
+require_once __DIR__ . '/../controllers/AuthController.php';
+
 session_start();
 
+error_log("Début du traitement du formulaire de connexion"); // Log début du traitement du formulaire
+
+$error = null;
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Vérification des identifiants
-    if ($username === 'admin@arcadia.fr' && $password === '123') {
-        header("Location: ../views/admin_dashboard.php"); // Rediriger vers le tableau de bord admin
+    error_log("Formulaire soumis avec email: " . $email); // Log email soumis
+
+    $authController = new AuthController($pdo);
+    $error = $authController->login($email, $password);
+
+    if ($error) {
+        error_log("Erreur après tentative de connexion: " . $error); // Log erreur après la tentative de connexion
+        $_SESSION['login_error'] = $error;
+        header("Location: ../views/connexion.php");
         exit();
-    } elseif ($username === 'employe@arcadia.fr' && $password === '123') {
-        header("Location: ../views/employe_dashboard.php"); // Rediriger vers le tableau de bord employé
-        exit();
-    } elseif ($username === 'veterinaire@arcadia.fr' && $password === '123') {
-        header("Location: ../views/veterinaire_dashboard.php"); // Rediriger vers le tableau de bord vétérinaire
-        exit();
-    } else {
-        $error = "Nom d'utilisateur ou mot de passe incorrect.";
     }
 }
-?>
-
-<?php 
-$title = "Connexion"; 
-include '../views/partials/header.php'; 
-?>
-<link rel="stylesheet" href="/arcadia/public/css/connexion.css">
-
-<div class="main-container">
-    <section id="login">
-        <h2>Connexion</h2>
-        <?php if(isset($error)): ?>
-            <p style="color:red;"><?php echo $error; ?></p>
-        <?php endif; ?>
-        <form action="login.php" method="POST">
-            <div class="form-group">
-                <label for="username">Nom d'utilisateur</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Mot de passe</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit" class="btn-submit">Se connecter</button>
-        </form>
-        <p>Pas encore inscrit ? <a href="register.php">Créer un compte</a></p>
-    </section>
-</div>
-
-<?php 
-include '../views/partials/footer.php'; 
 ?>
