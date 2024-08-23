@@ -1,15 +1,14 @@
 <?php 
 $title = "Connexion"; 
-include 'partials/header.php'; 
+include '../views/partials/header.php'; 
 ?>
-<link rel="stylesheet" href="/arcadia/public/css/connexion.css"> <!-- Style spécifique pour la connexion -->
+<link rel="stylesheet" href="/arcadia/public/css/connexion.css">
 
 <div class="main-container">
     <section id="login">
         <h2>Connexion</h2>
-        <?php if (isset($_SESSION['login_error'])): ?>
-            <p style="color:red;"><?php echo htmlspecialchars($_SESSION['login_error']); ?></p>
-            <?php unset($_SESSION['login_error']); // Effacer l'erreur après l'affichage ?>
+        <?php if(isset($error)): ?>
+            <p style="color:red;"><?php echo $error; ?></p>
         <?php endif; ?>
         <form action="/arcadia/controllers/login.php" method="POST">
             <div class="form-group">
@@ -26,5 +25,5 @@ include 'partials/header.php';
 </div>
 
 <?php 
-include 'partials/footer.php'; 
+include '../views/partials/footer.php'; 
 ?>

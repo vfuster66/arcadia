@@ -1,5 +1,6 @@
+
 <?php 
-$title = "Tableau de Bord - Administrateur"; 
+$title = "Tableau de Bord - admin"; 
 include 'partials/header.php'; 
 ?>
 <link rel="stylesheet" href="/arcadia/public/css/admin-dashboard.css"> <!-- Fichier CSS spécifique pour l'administration -->
