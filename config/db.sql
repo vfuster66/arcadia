@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS possede (
     PRIMARY KEY (username, role_id)
 );
 
--- Table `service`
+-- Table `services`
 CREATE TABLE IF NOT EXISTS services (
     service_id SERIAL PRIMARY KEY,
     nom VARCHAR(100) NOT NULL,
@@ -51,7 +51,7 @@ BEFORE UPDATE ON services
 FOR EACH ROW
 EXECUTE FUNCTION update_timestamp();
 
--- Table `service_extra_info` pour les informations supplémentaires sur les services
+-- Table `service_extra_info`
 CREATE TABLE IF NOT EXISTS service_extra_info (
     extra_info_id SERIAL PRIMARY KEY,
     service_id INT REFERENCES services(service_id),
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS animal (
     image_id INT REFERENCES image(image_id)
 );
 
--- Table `animal_history` (Historique des modifications des animaux)
+-- Table `animal_history`
 CREATE TABLE IF NOT EXISTS animal_history (
     history_id SERIAL PRIMARY KEY,
     animal_id INT REFERENCES animal(animal_id),
@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS rapport_veterinaire (
     redige_par VARCHAR(50) REFERENCES utilisateur(username)
 );
 
--- Table `obtient` (Relation entre animal et rapport vétérinaire)
+-- Table `obtient`
 CREATE TABLE IF NOT EXISTS obtient (
     animal_id INTEGER,
     rapport_veterinaire_id INTEGER,
@@ -150,7 +150,7 @@ CREATE TABLE IF NOT EXISTS comporte (
     PRIMARY KEY (habitat_id, image_id)
 );
 
--- Table `redige` (Relation entre utilisateur et rapport vétérinaire)
+-- Table `redige`
 CREATE TABLE IF NOT EXISTS redige (
     username VARCHAR(50),
     rapport_veterinaire_id INTEGER,

@@ -1,77 +1,46 @@
+<?php
+require_once __DIR__ . '/../config/db.php';
+
+// Remplacez '1' par l'ID de l'habitat que vous voulez filtrer
+$habitatId = 1;
+
+$query = "SELECT 
+            a.animal_id,
+            a.prenom,
+            a.etat,
+            a.details,
+            a.species,
+            a.nourriture,
+            a.quantite,
+            a.dernier_controle_veterinaire,
+            i.image_path 
+          FROM animal a
+          LEFT JOIN image i ON a.image_id = i.image_id
+          WHERE a.habitat_id = :habitatId";
+
+$stmt = $pdo->prepare($query);
+$stmt->execute(['habitatId' => $habitatId]);
+$animaux = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <div class="animal-cards">
-    <div class="animal-card">
-        <div class="animal-card-inner">
-            <div class="animal-card-front">
-                <img src="/arcadia/public/images/animaux/lion2.jpg" alt="Simba">
-                <h3>Simba</h3>
-                <p>Lion</p>
-            </div>
-            <div class="animal-card-back">
-                <p><strong>État :</strong> En bonne santé</p>
-                <p><strong>Nourriture :</strong> Viande (5 kg/jour)</p>
-                <p><strong>Dernier contrôle vétérinaire :</strong> 15/08/2024</p>
-                <p><strong>Détails :</strong> Simba est le roi de la savane, connu pour sa crinière majestueuse et son rugissement puissant.</p>
-            </div>
-        </div>
-    </div>
-    <div class="animal-card">
-        <div class="animal-card-inner">
-            <div class="animal-card-front">
-                <img src="/arcadia/public/images/animaux/elephant.jpg" alt="Mara">
-                <h3>Mara</h3>
-                <p>Éléphant</p>
-            </div>
-            <div class="animal-card-back">
-                <p><strong>État :</strong> En bonne santé</p>
-                <p><strong>Nourriture :</strong> Herbes, fruits (150 kg/jour)</p>
-                <p><strong>Dernier contrôle vétérinaire :</strong> 14/08/2024</p>
-                <p><strong>Détails :</strong> Mara est une éléphante majestueuse, symbole de sagesse et de force, pesant plus de 5 tonnes.</p>
+    <?php foreach ($animaux as $animal): ?>
+        <div class="animal-card">
+            <div class="animal-card-inner">
+                <div class="animal-card-front">
+                    <!-- Ajout de la base URL si nécessaire -->
+                    <img src="<?= htmlspecialchars('/arcadia/' . ltrim($animal['image_path'], '/')) ?>" alt="<?= htmlspecialchars($animal['prenom']) ?>">
+                    <h3><?= htmlspecialchars($animal['prenom']) ?></h3>
+                    <p><?= htmlspecialchars($animal['species']) ?></p>
+                </div>
+                <div class="animal-card-back">
+                    <p><strong>État :</strong> <?= htmlspecialchars($animal['etat']) ?></p>
+                    <p><strong>Nourriture :</strong> <?= htmlspecialchars($animal['nourriture']) ?> (<?= htmlspecialchars($animal['quantite']) ?>)</p>
+                    <p><strong>Dernier contrôle vétérinaire :</strong> <?= htmlspecialchars($animal['dernier_controle_veterinaire']) ?></p>
+                    <p><strong>Détails :</strong> <?= htmlspecialchars($animal['details']) ?></p>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="animal-card">
-        <div class="animal-card-inner">
-            <div class="animal-card-front">
-                <img src="/arcadia/public/images/animaux/girafe.jpg" alt="Tami">
-                <h3>Tami</h3>
-                <p>Girafe</p>
-            </div>
-            <div class="animal-card-back">
-                <p><strong>État :</strong> En bonne santé</p>
-                <p><strong>Nourriture :</strong> Feuilles (35 kg/jour)</p>
-                <p><strong>Dernier contrôle vétérinaire :</strong> 12/08/2024</p>
-                <p><strong>Détails :</strong> Tami est une girafe au long cou, capable d'atteindre les feuilles des arbres les plus hauts de la savane.</p>
-            </div>
-        </div>
-    </div>
-    <div class="animal-card">
-        <div class="animal-card-inner">
-            <div class="animal-card-front">
-                <img src="/arcadia/public/images/animaux/zebre.jpg" alt="Raya">
-                <h3>Raya</h3>
-                <p>Zèbre</p>
-            </div>
-            <div class="animal-card-back">
-                <p><strong>État :</strong> En bonne santé</p>
-                <p><strong>Nourriture :</strong> Herbes (25 kg/jour)</p>
-                <p><strong>Dernier contrôle vétérinaire :</strong> 10/08/2024</p>
-                <p><strong>Détails :</strong> Raya est un zèbre avec des rayures uniques, qui lui permettent de se camoufler dans les herbes hautes.</p>
-            </div>
-        </div>
-    </div>
-    <div class="animal-card">
-        <div class="animal-card-inner">
-            <div class="animal-card-front">
-                <img src="/arcadia/public/images/animaux/guepard.jpg" alt="Kaya">
-                <h3>Kaya</h3>
-                <p>Guépard</p>
-            </div>
-            <div class="animal-card-back">
-                <p><strong>État :</strong> En bonne santé</p>
-                <p><strong>Nourriture :</strong> Viande (4 kg/jour)</p>
-                <p><strong>Dernier contrôle vétérinaire :</strong> 11/08/2024</p>
-                <p><strong>Détails :</strong> Kaya est un guépard, l'animal terrestre le plus rapide, capable de courir à 110 km/h sur de courtes distances.</p>
-            </div>
-        </div>
-    </div>
+    <?php endforeach; ?>
 </div>
+

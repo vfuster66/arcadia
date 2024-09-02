@@ -10,75 +10,71 @@ document.addEventListener('DOMContentLoaded', function () {
     // Ouvrir le modal de modification
     editButtons.forEach(button => {
         button.addEventListener('click', function () {
-            currentHabitatItem = this.closest('.habitat-item');
-            const title = currentHabitatItem.querySelector('h3').textContent;
-            const mainImage = currentHabitatItem.dataset.mainImage;
-            const shortDescription = currentHabitatItem.dataset.shortDescription;
-            const detailedDescription = currentHabitatItem.dataset.detailedDescription;
-            const secondaryImages = JSON.parse(currentHabitatItem.dataset.secondaryImages);
-            const animals = JSON.parse(currentHabitatItem.dataset.animals);
+            try {
+                currentHabitatItem = this.closest('.habitat-item');
+                console.log('Modification de l\'habitat:', currentHabitatItem);
 
-            // Pré-remplir le formulaire
-            document.getElementById('edit-title').value = title;
-            document.getElementById('edit-short-description').value = shortDescription;
-            document.getElementById('edit-detailed-description').value = detailedDescription;
-            document.getElementById('current-main-image').src = mainImage;
+                const title = currentHabitatItem.querySelector('h3').textContent;
+                const mainImage = currentHabitatItem.dataset.mainImage;
+                const shortDescription = currentHabitatItem.dataset.shortDescription;
+                const detailedDescription = currentHabitatItem.dataset.detailedDescription;
+                let secondaryImages = currentHabitatItem.dataset.secondaryImages;
 
-            // Pré-remplir les images secondaires
-            const currentSecondaryImagesContainer = document.getElementById('current-secondary-images');
-            currentSecondaryImagesContainer.innerHTML = '';
-            secondaryImages.forEach(image => {
-                const imgContainer = document.createElement('div');
-                imgContainer.classList.add('image-entry');
-                const img = document.createElement('img');
-                img.src = image;
-                img.style.maxWidth = '30%';
-                img.style.marginRight = '10px';
-                
-                const deleteButton = document.createElement('button');
-                deleteButton.textContent = 'Supprimer';
-                deleteButton.classList.add('btn-delete-image');
-                deleteButton.addEventListener('click', function () {
-                    imgContainer.remove();
-                });
+                // Correction: Supprimez les guillemets extérieurs de la chaîne JSON si nécessaire
+                if (secondaryImages.startsWith('"')) {
+                    secondaryImages = secondaryImages.slice(1, -1);
+                }
 
-                imgContainer.appendChild(img);
-                imgContainer.appendChild(deleteButton);
-                currentSecondaryImagesContainer.appendChild(imgContainer);
-            });
+                // Vérifiez si secondaryImages est une chaîne JSON et analysez-la si nécessaire
+                try {
+                    secondaryImages = JSON.parse(secondaryImages.replace(/\\/g, ''));
+                } catch (error) {
+                    console.error('Erreur lors du parsing de secondaryImages:', error);
+                    secondaryImages = [];
+                }
 
-            // Pré-remplir la liste des animaux avec des boutons "Modifier" et "Supprimer"
-            const editAnimalsList = document.getElementById('edit-animals-list');
-            editAnimalsList.innerHTML = '';
-            animals.forEach((animal, index) => {
-                const animalItem = document.createElement('div');
-                animalItem.classList.add('animal-item');
-                animalItem.innerHTML = `
-                    <h4>${animal.name} - ${animal.species}</h4>
-                    <button class="btn-edit-animal">Modifier</button>
-                    <button class="btn-delete-animal">Supprimer</button>
-                `;
-                
-                // Bouton "Modifier" pour chaque animal
-                animalItem.querySelector('.btn-edit-animal').addEventListener('click', function () {
-                    // Ouvrir un autre modal ou remplir un formulaire spécifique pour cet animal
-                    // Utiliser les données de l'animal pour pré-remplir le formulaire de modification d'animal
-                    document.getElementById('edit-animal-name').value = animal.name;
-                    document.getElementById('edit-animal-species').value = animal.species;
-                    document.getElementById('edit-animal-details').value = animal.details;
-                    // Afficher la photo actuelle si disponible
-                    // Si vous avez un modal séparé pour les animaux, vous pouvez l'ouvrir ici
-                });
+                // Afficher le contenu de secondaryImages pour déboguer
+                console.log('secondaryImages après parsing:', secondaryImages);
 
-                // Bouton "Supprimer" pour chaque animal
-                animalItem.querySelector('.btn-delete-animal').addEventListener('click', function () {
-                    animalItem.remove();
-                });
+                // Pré-remplir le formulaire
+                document.getElementById('edit-title').value = title;
+                document.getElementById('edit-short-description').value = shortDescription;
+                document.getElementById('edit-detailed-description').value = detailedDescription;
 
-                editAnimalsList.appendChild(animalItem);
-            });
+                if (document.getElementById('current-main-image')) {
+                    document.getElementById('current-main-image').src = mainImage;
+                }
 
-            editHabitatModal.style.display = 'block';
+                // Pré-remplir les images secondaires
+                const currentSecondaryImagesContainer = document.getElementById('current-secondary-images');
+                if (currentSecondaryImagesContainer) {
+                    currentSecondaryImagesContainer.innerHTML = '';
+                    secondaryImages.forEach(image => {
+                        const imgContainer = document.createElement('div');
+                        imgContainer.classList.add('image-entry');
+                        const img = document.createElement('img');
+
+                        img.src = image.secondary_image_url;
+                        img.style.maxWidth = '30%';
+                        img.style.marginRight = '10px';
+
+                        const deleteButton = document.createElement('button');
+                        deleteButton.textContent = 'Supprimer';
+                        deleteButton.classList.add('btn-delete-image');
+                        deleteButton.addEventListener('click', function () {
+                            imgContainer.remove();
+                        });
+
+                        imgContainer.appendChild(img);
+                        imgContainer.appendChild(deleteButton);
+                        currentSecondaryImagesContainer.appendChild(imgContainer);
+                    });
+                }
+
+                editHabitatModal.style.display = 'block';
+            } catch (error) {
+                console.error('Erreur lors de l\'ouverture du modal de modification:', error);
+            }
         });
     });
 
@@ -124,76 +120,62 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    const accordionHeaders = document.querySelectorAll('.accordion-header');
 
-    accordionHeaders.forEach(header => {
-        header.addEventListener('click', function () {
-            const accordionItem = this.parentElement;
+    // Lorsque l'utilisateur clique sur le lien "Voir l'image actuelle"
+    const viewMainImageLink = document.getElementById('view-main-image');
+    
+    // Vérifier si l'élément existe avant de l'utiliser
+    if (viewMainImageLink) {
+        const imagePreviewModal = document.getElementById('imagePreviewModal');
+        const previewImage = document.getElementById('preview-image');
+        const closePreviewModal = imagePreviewModal.querySelector('.close');
 
-            // Toggle active class
-            accordionItem.classList.toggle('active');
+        // Lorsque l'utilisateur clique sur le lien "Voir l'image actuelle"
+        viewMainImageLink.addEventListener('click', function (e) {
+            e.preventDefault();
+            // Mettre à jour la source de l'image du modal
+            previewImage.src = document.getElementById('current-main-image').src;
+            // Afficher le modal
+            imagePreviewModal.style.display = 'block';
         });
-    });
 
-    // Ajout dynamique des animaux
-    const animalsContainer = document.getElementById('animals-container');
-    const addAnimalBtn = document.getElementById('add-animal-btn');
-    let animalCount = 1;
-    const maxAnimals = 3;
+        // Fermer le modal lorsque l'utilisateur clique sur la croix
+        closePreviewModal.addEventListener('click', function () {
+            imagePreviewModal.style.display = 'none';
+        });
 
-    addAnimalBtn.addEventListener('click', function () {
-        if (animalCount < maxAnimals) {
-            animalCount++;
-
-            const newAnimalEntry = document.createElement('div');
-            newAnimalEntry.classList.add('animal-entry');
-            newAnimalEntry.innerHTML = `
-                <label for="animal-name-${animalCount}">Nom de l'Animal</label>
-                <input type="text" id="animal-name-${animalCount}" name="animal-name[]" required>
-
-                <label for="animal-species-${animalCount}">Espèce</label>
-                <input type="text" id="animal-species-${animalCount}" name="animal-species[]" required>
-
-                <label for="animal-details-${animalCount}">Détails</label>
-                <textarea id="animal-details-${animalCount}" name="animal-details[]" rows="2" required></textarea>
-
-                <label for="animal-photo-${animalCount}">Photo</label>
-                <input type="file" id="animal-photo-${animalCount}" name="animal-photo[]" accept="image/*" required>
-            `;
-
-            animalsContainer.appendChild(newAnimalEntry);
-
-            if (animalCount === maxAnimals) {
-                addAnimalBtn.disabled = true;
+        // Fermer le modal lorsqu'on clique en dehors du contenu
+        window.addEventListener('click', function (event) {
+            if (event.target === imagePreviewModal) {
+                imagePreviewModal.style.display = 'none';
             }
-        }
-    });
+        });
+    }
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    const viewMainImageLink = document.getElementById('view-main-image');
-    const imagePreviewModal = document.getElementById('imagePreviewModal');
-    const previewImage = document.getElementById('preview-image');
-    const closePreviewModal = imagePreviewModal.querySelector('.close');
+    // Gérer la prévisualisation des images secondaires
+    const secondaryImagePreviewModal = document.getElementById('secondaryImagePreviewModal');
+    const secondaryPreviewImage = document.getElementById('secondary-preview-image');
+    const closeSecondaryPreviewModal = secondaryImagePreviewModal.querySelector('.close');
 
-    // Lorsque l'utilisateur clique sur le lien "Voir l'image actuelle"
-    viewMainImageLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        // Mettre à jour la source de l'image du modal
-        previewImage.src = document.getElementById('current-main-image').src;
-        // Afficher le modal
-        imagePreviewModal.style.display = 'block';
+    // Ajouter un événement pour chaque image secondaire
+    document.getElementById('current-secondary-images').addEventListener('click', function (e) {
+        if (e.target.tagName === 'IMG') {
+            secondaryPreviewImage.src = e.target.src;
+            secondaryImagePreviewModal.style.display = 'block';
+        }
     });
 
     // Fermer le modal lorsque l'utilisateur clique sur la croix
-    closePreviewModal.addEventListener('click', function () {
-        imagePreviewModal.style.display = 'none';
+    closeSecondaryPreviewModal.addEventListener('click', function () {
+        secondaryImagePreviewModal.style.display = 'none';
     });
 
     // Fermer le modal lorsqu'on clique en dehors du contenu
     window.addEventListener('click', function (event) {
-        if (event.target === imagePreviewModal) {
-            imagePreviewModal.style.display = 'none';
+        if (event.target === secondaryImagePreviewModal) {
+            secondaryImagePreviewModal.style.display = 'none';
         }
     });
 });

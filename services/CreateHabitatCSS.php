@@ -1,3 +1,16 @@
+<?php
+
+function createHabitatCSS($nomHabitat) {
+    // Convertir le nom de l'habitat en nom de fichier CSS (par exemple, "La Jungle" devient "jungle.css")
+    $filename = strtolower(str_replace(' ', '_', $nomHabitat)) . '.css';
+    $filePath = __DIR__ . '/../public/css/' . $filename;
+
+    // Nom de l'habitat utilisé dans les IDs et les classes
+    $habitatID = strtolower(str_replace(' ', '-', $nomHabitat));
+
+    // Contenu du fichier CSS à créer
+    $cssContent = <<<CSS
+
 /* Styles globaux */
 body {
     font-family: 'Nunito', sans-serif;
@@ -24,15 +37,15 @@ h1 {
     margin-top: 40px;
 }
 
-/* Section description de la jungle */
-#description-jungle p {
+/* Section description de l'habitat */
+#description p {
     font-size: 18px;
     color: #212121;
     line-height: 1.6;
     margin-bottom: 20px;
 }
 
-/* Galerie de photos de la jungle */
+/* Galerie de photos de l'habitat */
 .photo-gallery {
     display: flex;
     flex-wrap: wrap;
@@ -64,18 +77,6 @@ h1 {
     margin-bottom: 80px;
 }
 
-.animal-card:nth-child(4) {
-    flex: 1 1 calc(33.333% - 80px);
-    margin-left: calc(33.333% / 2 - 40px);
-    margin-bottom: 30px;
-}
-
-.animal-card:nth-child(5) {
-    flex: 1 1 calc(33.333% - 80px);
-    margin-right: calc(33.333% / 2 - 40px);
-    margin-bottom: 30px;
-}
-
 .animal-card-inner {
     position: relative;
     width: 100%;
@@ -89,32 +90,12 @@ h1 {
     transform: rotateY(180deg);
 }
 
-/* Styles pour l'avant et l'arrière des cartes */
-.animal-card-front, .animal-card-back {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 10px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.6s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-
-}
-
 /* Avant de la carte */
 .animal-card-front {
     background-color: #A8BCAA;
     z-index: 1;
 }
 
-/* Image sur la face avant */
 .animal-card-front img {
     width: 180px;
     height: 180px;
@@ -123,7 +104,6 @@ h1 {
     object-fit: cover;
 }
 
-/* Texte sur la face avant */
 .animal-card-front h3 {
     font-family: 'Poppins', sans-serif;
     font-size: 24px;
@@ -145,7 +125,6 @@ h1 {
     padding: 10px;
 }
 
-/* Texte sur la face arrière */
 .animal-card-back h4 {
     font-family: 'Poppins', sans-serif;
     font-size: 22px;
@@ -170,22 +149,17 @@ h1 {
         margin-bottom: 30px;
     }
 
-    .photo-gallery img {
+    #photos-{$habitatID} .photo-gallery img {
         max-width: calc(50% - 10px); /* Deux images par ligne */
     }
 
-    .animal-cards {
+    #{$habitatID}-animaux .animal-cards {
         gap: 30px;
     }
 
     .animal-card {
         flex: 1 1 calc(50% - 30px); /* Deux cartes par ligne */
         max-width: calc(50% - 20px);
-    }
-
-    .animal-card:nth-child(4), .animal-card:nth-child(5) {
-        margin-left: 0;
-        margin-right: 0;
     }
 }
 
@@ -218,12 +192,6 @@ h1 {
         max-width: 100%;
     }
 
-    .animal-card:nth-child(4), .animal-card:nth-child(5) {
-        margin-left: 0;
-        margin-right: 0;
-        margin-bottom: 20px;
-    }
-
     .animal-card-front img {
         width: 150px;
         height: 150px;
@@ -242,3 +210,44 @@ h1 {
         font-size: 18px;
     }
 }
+
+/* Media queries pour petits appareils (moins de 480px) */
+@media (max-width: 480px) {
+    h1, h2 {
+        font-size: 24px;
+    }
+
+    #photos-{$habitatID} .photo-gallery img {
+        width: calc(100% - 20px);
+    }
+
+    .animal-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .animal-card-front img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .animal-card-front h3 {
+        font-size: 20px;
+    }
+
+    .animal-card-front p,
+    .animal-card-back p {
+        font-size: 14px;
+    }
+
+    .animal-card-back h4 {
+        font-size: 18px;
+    }
+}
+CSS;
+
+    file_put_contents($filePath, $cssContent);
+}
+
+?>

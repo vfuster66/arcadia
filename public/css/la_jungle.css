@@ -24,15 +24,15 @@ h1 {
     margin-top: 40px;
 }
 
-/* Section description du marais */
-#description-marais p {
+/* Section description de la jungle */
+#description p {
     font-size: 18px;
     color: #212121;
     line-height: 1.6;
     margin-bottom: 20px;
 }
 
-/* Galerie de photos du marais */
+/* Galerie de photos de la jungle */
 .photo-gallery {
     display: flex;
     flex-wrap: wrap;
@@ -90,7 +90,8 @@ h1 {
 }
 
 /* Styles pour l'avant et l'arrière des cartes */
-.animal-card-front, .animal-card-back {
+.animal-card-front,
+.animal-card-back {
     position: absolute;
     top: 0;
     left: 0;
@@ -171,7 +172,8 @@ h1 {
     }
 
     .photo-gallery img {
-        max-width: calc(50% - 10px); /* Deux images par ligne */
+        max-width: calc(50% - 10px);
+        /* Deux images par ligne */
     }
 
     .animal-cards {
@@ -179,11 +181,13 @@ h1 {
     }
 
     .animal-card {
-        flex: 1 1 calc(50% - 30px); /* Deux cartes par ligne */
+        flex: 1 1 calc(50% - 30px);
+        /* Deux cartes par ligne */
         max-width: calc(50% - 20px);
     }
 
-    .animal-card:nth-child(4), .animal-card:nth-child(5) {
+    .animal-card:nth-child(4),
+    .animal-card:nth-child(5) {
         margin-left: 0;
         margin-right: 0;
     }
@@ -206,7 +210,8 @@ h1 {
     }
 
     .photo-gallery img {
-        max-width: 100%; /* Une seule image par ligne */
+        max-width: 100%;
+        /* Une seule image par ligne */
     }
 
     .animal-cards {
@@ -214,11 +219,13 @@ h1 {
     }
 
     .animal-card {
-        flex: 1 1 100%; /* Une carte par ligne */
+        flex: 1 1 100%;
+        /* Une carte par ligne */
         max-width: 100%;
     }
 
-    .animal-card:nth-child(4), .animal-card:nth-child(5) {
+    .animal-card:nth-child(4),
+    .animal-card:nth-child(5) {
         margin-left: 0;
         margin-right: 0;
         margin-bottom: 20px;

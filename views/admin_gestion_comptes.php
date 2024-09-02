@@ -85,20 +85,21 @@ $users = $userModel->getAllUsers();
             <div id="account-list-container">
                 <?php foreach ($users as $user): ?>
                     <div class="account-item" 
-                        data-id="<?= htmlspecialchars($user['user_id']) ?>" 
-                        data-name="<?= htmlspecialchars($user['username']) ?>" 
-                        data-email="<?= htmlspecialchars($user['email']) ?>" 
-                        data-role="<?= htmlspecialchars($user['role']) ?>"
-                        data-nom="<?= htmlspecialchars($user['nom']) ?>" 
-                        data-prenom="<?= htmlspecialchars($user['prenom']) ?>">
-                        <h3><?= htmlspecialchars($user['username']) ?> - <?= htmlspecialchars($user['role']) ?> (<?= htmlspecialchars($user['email']) ?>)</h3>
+                        data-id="<?= htmlspecialchars($user['user_id'] ?? '') ?>" 
+                        data-name="<?= htmlspecialchars($user['username'] ?? '') ?>" 
+                        data-email="<?= htmlspecialchars($user['email'] ?? '') ?>" 
+                        data-role="<?= htmlspecialchars($user['role'] ?? '') ?>"
+                        data-nom="<?= htmlspecialchars($user['nom'] ?? '') ?>" 
+                        data-prenom="<?= htmlspecialchars($user['prenom'] ?? '') ?>">
+                        <h3><?= htmlspecialchars($user['username'] ?? '') ?> - <?= htmlspecialchars($user['role'] ?? '') ?> (<?= htmlspecialchars($user['email'] ?? '') ?>)</h3>
                         <button class="btn-edit">Modifier</button>
                         <?php if ($user['role'] !== 'admin'): ?>
-                            <button class="btn-delete" data-id="<?= htmlspecialchars($user['user_id']) ?>">Supprimer</button>
+                            <button class="btn-delete" data-id="<?= htmlspecialchars($user['user_id'] ?? '') ?>">Supprimer</button>
                         <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
             </div>
+
 
         </div>
     </div> <!-- Fin de two-column-layout -->

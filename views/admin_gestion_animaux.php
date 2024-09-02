@@ -1,6 +1,33 @@
 <?php 
+session_start();
+
+// Activer l'affichage des erreurs
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Vérifier si l'utilisateur est un administrateur connecté
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header('Location: /arcadia/views/connexion.php');
+    exit();
+}
+
+require_once __DIR__ . '/../config/db.php';
+
 $title = "Gestion des Animaux - Administrateur"; 
 include 'partials/header.php'; 
+
+// Récupérer les animaux depuis la base de données
+$query = "SELECT a.animal_id, a.prenom, a.species, a.details, a.etat, a.nourriture, a.quantite, a.dernier_controle_veterinaire, h.nom AS habitat
+          FROM animal a
+          LEFT JOIN detient d ON a.animal_id = d.animal_id
+          LEFT JOIN habitat h ON d.habitat_id = h.habitat_id";
+$stmt = $pdo->query($query);
+$animaux = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Récupérer les habitats pour le formulaire
+$habitat_query = $pdo->query("SELECT habitat_id, nom FROM habitat");
+$habitats = $habitat_query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <link rel="stylesheet" href="/arcadia/public/css/admin-gestion-animaux.css">
 
@@ -13,8 +40,8 @@ include 'partials/header.php';
             <h2>Ajouter un Nouvel Animal</h2>
             <form action="/arcadia/controllers/save_animal.php" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="name">Nom de l'animal</label>
-                    <input type="text" id="name" name="name" required>
+                    <label for="prenom">Nom de l'animal</label>
+                    <input type="text" id="prenom" name="prenom" required>
                 </div>
                 <div class="form-group">
                     <label for="species">Espèce</label>
@@ -22,7 +49,11 @@ include 'partials/header.php';
                 </div>
                 <div class="form-group">
                     <label for="habitat">Habitat</label>
-                    <input type="text" id="habitat" name="habitat" required>
+                    <select id="habitat" name="habitat_id" required>
+                        <?php foreach ($habitats as $habitat): ?>
+                            <option value="<?= htmlspecialchars($habitat['habitat_id']) ?>"><?= htmlspecialchars($habitat['nom']) ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="details">Détails</label>
@@ -45,48 +76,26 @@ include 'partials/header.php';
                 <input type="text" id="filter-search" placeholder="Rechercher par nom ou espèce...">
                 <select id="filter-habitat">
                     <option value="">Tous les habitats</option>
-                    <option value="savane">Savane</option>
-                    <option value="jungle">Jungle</option>
-                    <option value="marais">Marais</option>
-                    <!-- Ajouter d'autres habitats ici -->
+                    <?php foreach ($habitats as $habitat): ?>
+                        <option value="<?= htmlspecialchars($habitat['nom']) ?>"><?= htmlspecialchars($habitat['nom']) ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
 
-
-            <!-- Liste d'animaux triée par habitat -->
+            <!-- Liste d'animaux -->
             <div id="animal-list-container">
-                <!-- Exemple d'un animal -->
-                <div class="animal-item" data-name="Simba" data-species="Lion" data-habitat="savane">
-                    <h3>Simba - Lion (Savane)</h3>
-                    <button>Modifier</button>
-                    <button>Supprimer</button>
-                </div>
-                <!-- Ajout d'un autre exemple d'animal -->
-                <div class="animal-item" data-name="Mara" data-species="Éléphant" data-habitat="savane">
-                    <h3>Mara - Éléphant (Savane)</h3>
-                    <button>Modifier</button>
-                    <button>Supprimer</button>
-                </div>
-                <div class="animal-item" data-name="Tami" data-species="Girafe" data-habitat="savane">
-                    <h3>Tami - Girafe (Savane)</h3>
-                    <button>Modifier</button>
-                    <button>Supprimer</button>
-                </div>
-                <div class="animal-item" data-name="Zuri" data-species="Zèbre" data-habitat="savane">
-                    <h3>Zuri - Zèbre (Savane)</h3>
-                    <button>Modifier</button>
-                    <button>Supprimer</button>
-                </div>
-                <div class="animal-item" data-name="Nala" data-species="Guépard" data-habitat="jungle">
-                    <h3>Nala - Guépard (Jungle)</h3>
-                    <button>Modifier</button>
-                    <button>Supprimer</button>
-                </div>
-                <div class="animal-item" data-name="Kara" data-species="Crocodile" data-habitat="marais">
-                    <h3>Kara - Crocodile (Marais)</h3>
-                    <button>Modifier</button>
-                    <button>Supprimer</button>
-                </div>
+                <?php foreach ($animaux as $animal): ?>
+                    <div class="animal-item" 
+                         data-id="<?= htmlspecialchars($animal['animal_id']) ?>" 
+                         data-name="<?= htmlspecialchars($animal['prenom']) ?>" 
+                         data-species="<?= htmlspecialchars($animal['species']) ?>" 
+                         data-habitat="<?= htmlspecialchars($animal['habitat']) ?>" 
+                         data-details="<?= htmlspecialchars($animal['details']) ?>">
+                        <h3><?= htmlspecialchars($animal['prenom']) ?> - <?= htmlspecialchars($animal['species']) ?> (<?= htmlspecialchars($animal['habitat']) ?>)</h3>
+                        <button class="edit-animal">Modifier</button>
+                        <button class="delete-animal">Supprimer</button>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </div> <!-- Fin de two-column-layout -->
@@ -97,22 +106,23 @@ include 'partials/header.php';
     <div class="modal-content">
         <span class="close">&times;</span>
         <h2>Modifier l'Animal</h2>
-        <form id="editAnimalForm">
+        <form id="editAnimalForm" action="/arcadia/controllers/update_animal.php" method="POST" enctype="multipart/form-data">
+            <input type="hidden" id="edit-animal-id" name="animal_id">
             <div class="form-group">
                 <label for="edit-animal-name">Nom de l'animal</label>
-                <input type="text" id="edit-animal-name" name="edit-animal-name" required>
+                <input type="text" id="edit-animal-name" name="prenom" required>
             </div>
             <div class="form-group">
                 <label for="edit-animal-species">Espèce</label>
-                <input type="text" id="edit-animal-species" name="edit-animal-species" required>
+                <input type="text" id="edit-animal-species" name="species" required>
             </div>
             <div class="form-group">
                 <label for="edit-animal-details">Détails</label>
-                <textarea id="edit-animal-details" name="edit-animal-details" rows="5" required></textarea>
+                <textarea id="edit-animal-details" name="details" rows="5" required></textarea>
             </div>
             <div class="form-group">
                 <label for="edit-animal-photo">Photo</label>
-                <input type="file" id="edit-animal-photo" name="edit-animal-photo" accept="image/*">
+                <input type="file" id="edit-animal-photo" name="photo" accept="image/*">
                 <div>
                     <img id="current-animal-photo" src="#" alt="Photo Actuelle" style="max-width: 100%; margin-top: 10px;">
                 </div>
@@ -123,18 +133,19 @@ include 'partials/header.php';
     </div>
 </div>
 
-
 <!-- Modal de suppression d'un animal -->
 <div id="deleteAnimalModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
         <h2>Supprimer l'Animal</h2>
         <p>Êtes-vous sûr de vouloir supprimer cet animal ? Cette action est irréversible.</p>
-        <button id="confirmDeleteAnimal" class="btn-submit">Supprimer</button>
-        <button type="button" class="btn-cancel">Annuler</button>
+        <form id="deleteAnimalForm" action="/arcadia/controllers/delete_animal.php" method="POST">
+            <input type="hidden" id="delete-animal-id" name="animal_id">
+            <button id="confirmDeleteAnimal" class="btn-submit">Supprimer</button>
+            <button type="button" class="btn-cancel">Annuler</button>
+        </form>
     </div>
 </div>
-
 
 <?php include 'partials/footer.php'; ?>
 

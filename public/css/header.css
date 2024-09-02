@@ -1,7 +1,7 @@
 /* Style pour le conteneur du header */
 .header-container {
     position: absolute;
-    width: 1440px;
+    width: 1200px;
     height: 100px;
     left: 0px;
     top: 0px;
@@ -20,24 +20,25 @@
 /* Style pour la navigation principale */
 .main-nav ul {
     display: flex;
-    gap: 30px;
+    gap: 10px;
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
 .main-nav ul li {
-    flex: 0 0 150px;
+    flex: 0 0 120px;
 }
 
 .main-nav ul li a {
     display: block; 
-    padding: 5px 0;
-    width: 150px; 
+    padding: 3px 0; /* Réduit le padding vertical */
+    width: 130px; /* Réduit la largeur du bouton */
+    font-size: 14px; /* Réduit la taille de la police */
     text-align: center;
     background-color: #0E402D;
     color: #FFFDE7;
-    border-radius: 20px;
+    border-radius: 15px; /* Réduit le rayon des coins */
     font-weight: bold;
     text-decoration: none;
     transition: background-color 0.3s ease;
@@ -59,19 +60,21 @@
     }
 
     .logo img {
-        height: 100px; /* Réduire la taille du logo pour les tablettes */
+        height: 100px;
     }
 
     .main-nav ul {
-        gap: 20px; /* Réduire l'espacement entre les éléments de la navigation */
+        gap: 20px;
     }
 
     .main-nav ul li {
-        flex: 0 0 120px; /* Réduire la largeur des éléments de navigation */
+        flex: 0 0 100px; /* Réduit la largeur des éléments de navigation */
     }
 
     .main-nav ul li a {
-        width: 120px; /* Ajuster la largeur du lien pour correspondre au nouvel espace */
+        width: 100px; /* Ajuste la largeur du lien */
+        font-size: 13px; /* Réduit la taille de la police pour les tablettes */
+        padding: 3px; /* Réduit encore le padding */
     }
 }
 
@@ -85,7 +88,7 @@
     }
 
     .logo img {
-        height: 80px; /* Réduire encore la taille du logo pour les petits écrans */
+        height: 80px;
     }
 
     .main-nav ul {
@@ -101,7 +104,87 @@
 
     .main-nav ul li a {
         width: 100%; /* Le lien prend toute la largeur disponible */
-        padding: 10px;
+        padding: 8px; /* Réduit le padding pour les mobiles */
         text-align: center;
+        font-size: 12px; /* Réduit la taille de la police pour les mobiles */
+    }
+}
+
+/* Styles pour la navigation mobile */
+.mobile-nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #FFFDE7;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    padding: 20px;
+    border-top: 1px solid #BDBDBD;
+    z-index: 999;
+}
+
+.mobile-nav ul {
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-nav ul li a {
+    padding: 8px; /* Réduit le padding des éléments dans le menu mobile */
+    width: 100%;
+    text-align: center;
+    font-size: 12px; /* Réduit la taille de la police pour le menu mobile */
+}
+
+/* Media queries pour tablette (entre 768px et 1024px) */
+@media (max-width: 1024px) {
+    .header-container {
+        padding: 0 30px;
+    }
+
+    .logo img {
+        height: 80px;
+    }
+
+    .main-nav ul {
+        gap: 15px;
+    }
+
+    .main-nav ul li {
+        flex: 0 0 100px;
+    }
+
+    .main-nav ul li a {
+        width: 100px;
+        font-size: 12px; /* Réduction supplémentaire pour les tablettes */
+        padding: 3px;
+    }
+}
+
+/* Media queries pour mobile (moins de 768px) */
+@media (max-width: 768px) {
+    .header-container {
+        padding: 10px 20px;
+        height: auto;
+        align-items: center;
+    }
+
+    .logo img {
+        height: 60px;
+    }
+
+    .main-nav {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .mobile-nav.open {
+        display: flex;
     }
 }

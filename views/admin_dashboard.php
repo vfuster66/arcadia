@@ -1,5 +1,18 @@
 
 <?php 
+session_start();
+
+// Activer l'affichage des erreurs
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Vérifier si l'utilisateur est un administrateur connecté
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header('Location: /arcadia/views/connexion.php');
+    exit();
+}
+
 $title = "Tableau de Bord - admin"; 
 include 'partials/header.php'; 
 ?>
@@ -46,6 +59,10 @@ include 'partials/header.php';
         <a href="admin_consultation_compte_rendus.php" class="card">
             <h2>Consultation des Comptes Rendus</h2>
             <p>Voir et filtrer les rapports des vétérinaires.</p>
+        </a>
+        <a href="admin_gestion_horaires.php" class="card">
+            <h2>Gestion des Horaires</h2>
+            <p>Modifier les horaires d'ouverture et de fermeture du parc.</p>
         </a>
     </div>
 </div>

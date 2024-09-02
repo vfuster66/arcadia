@@ -1,77 +1,46 @@
+<?php
+require_once __DIR__ . '/../config/db.php';
+
+// Remplacez '1' par l'ID de l'habitat que vous voulez filtrer
+$habitatId = 3;
+
+$query = "SELECT 
+            a.animal_id,
+            a.prenom,
+            a.etat,
+            a.details,
+            a.species,
+            a.nourriture,
+            a.quantite,
+            a.dernier_controle_veterinaire,
+            i.image_path 
+          FROM animal a
+          LEFT JOIN image i ON a.image_id = i.image_id
+          WHERE a.habitat_id = :habitatId";
+
+$stmt = $pdo->prepare($query);
+$stmt->execute(['habitatId' => $habitatId]);
+$animaux = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <div class="animal-cards">
-    <div class="animal-card">
-        <div class="animal-card-inner">
-            <div class="animal-card-front">
-                <img src="/arcadia/public/images/animaux/crocodile.jpg" alt="Gator">
-                <h3>Gator</h3>
-                <p>Crocodile</p>
-            </div>
-            <div class="animal-card-back">
-                <p><strong>État :</strong> En bonne santé</p>
-                <p><strong>Nourriture :</strong> Poissons, petits mammifères (4 kg/jour)</p>
-                <p><strong>Dernier contrôle vétérinaire :</strong> 15/08/2024</p>
-                <p><strong>Détails :</strong> Gator est un crocodile imposant, capable de rester immobile pendant des heures avant de fondre sur sa proie.</p>
-            </div>
-        </div>
-    </div>
-    <div class="animal-card">
-        <div class="animal-card-inner">
-            <div class="animal-card-front">
-                <img src="/arcadia/public/images/animaux/hippopotame.jpg" alt="Luna">
-                <h3>Luna</h3>
-                <p>Hippopotame</p>
-            </div>
-            <div class="animal-card-back">
-                <p><strong>État :</strong> En bonne santé</p>
-                <p><strong>Nourriture :</strong> Herbes (50 kg/jour)</p>
-                <p><strong>Dernier contrôle vétérinaire :</strong> 14/08/2024</p>
-                <p><strong>Détails :</strong> Luna est une hippopotame qui passe la plupart de son temps dans l'eau, ne sortant que la nuit pour se nourrir.</p>
+    <?php foreach ($animaux as $animal): ?>
+        <div class="animal-card">
+            <div class="animal-card-inner">
+                <div class="animal-card-front">
+                    <!-- Ajout de la base URL si nécessaire -->
+                    <img src="<?= htmlspecialchars('/arcadia/' . ltrim($animal['image_path'], '/')) ?>" alt="<?= htmlspecialchars($animal['prenom']) ?>">
+                    <h3><?= htmlspecialchars($animal['prenom']) ?></h3>
+                    <p><?= htmlspecialchars($animal['species']) ?></p>
+                </div>
+                <div class="animal-card-back">
+                    <p><strong>État :</strong> <?= htmlspecialchars($animal['etat']) ?></p>
+                    <p><strong>Nourriture :</strong> <?= htmlspecialchars($animal['nourriture']) ?> (<?= htmlspecialchars($animal['quantite']) ?>)</p>
+                    <p><strong>Dernier contrôle vétérinaire :</strong> <?= htmlspecialchars($animal['dernier_controle_veterinaire']) ?></p>
+                    <p><strong>Détails :</strong> <?= htmlspecialchars($animal['details']) ?></p>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="animal-card">
-        <div class="animal-card-inner">
-            <div class="animal-card-front">
-                <img src="/arcadia/public/images/animaux/tortue.jpg" alt="Shelly">
-                <h3>Shelly</h3>
-                <p>Tortue</p>
-            </div>
-            <div class="animal-card-back">
-                <p><strong>État :</strong> En bonne santé</p>
-                <p><strong>Nourriture :</strong> Plantes aquatiques (2 kg/jour)</p>
-                <p><strong>Dernier contrôle vétérinaire :</strong> 13/08/2024</p>
-                <p><strong>Détails :</strong> Shelly est une tortue, symbole de longévité, pouvant vivre jusqu'à 100 ans dans son environnement naturel.</p>
-            </div>
-        </div>
-    </div>
-    <div class="animal-card">
-        <div class="animal-card-inner">
-            <div class="animal-card-front">
-                <img src="/arcadia/public/images/animaux/salamandre2.jpg" alt="Flick">
-                <h3>Flick</h3>
-                <p>Salamandre</p>
-            </div>
-            <div class="animal-card-back">
-                <p><strong>État :</strong> En bonne santé</p>
-                <p><strong>Nourriture :</strong> Insectes, petits invertébrés (200g/jour)</p>
-                <p><strong>Dernier contrôle vétérinaire :</strong> 12/08/2024</p>
-                <p><strong>Détails :</strong> Flick est une salamandre capable de régénérer ses membres, une capacité étonnante dans le règne animal.</p>
-            </div>
-        </div>
-    </div>
-    <div class="animal-card">
-        <div class="animal-card-inner">
-            <div class="animal-card-front">
-                <img src="/arcadia/public/images/animaux/flamant.jpg" alt="Rosie">
-                <h3>Rosie</h3>
-                <p>Flamant Rose</p>
-            </div>
-            <div class="animal-card-back">
-                <p><strong>État :</strong> En bonne santé</p>
-                <p><strong>Nourriture :</strong> Algues, crustacés (500g/jour)</p>
-                <p><strong>Dernier contrôle vétérinaire :</strong> 10/08/2024</p>
-                <p><strong>Détails :</strong> Rosie est un flamant rose dont la couleur vive est due aux pigments naturels présents dans son alimentation.</p>
-            </div>
-        </div>
-    </div>
+    <?php endforeach; ?>
 </div>
+
