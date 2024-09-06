@@ -1,30 +1,36 @@
-<?php
-session_start(); // Démarre la session ou reprend la session existante
 
+<?php 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+<?php
 // Définir le titre de la page si non défini
 $title = $title ?? 'Zoo Arcadia';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo htmlspecialchars($title); ?></title>
-    <link rel="stylesheet" href="/arcadia/public/css/styles.css"> <!-- Style global -->
-    <link rel="stylesheet" href="/arcadia/public/css/header.css"> <!-- Style spécifique au header -->
-</head>
-<body>
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <a href="/arcadia/views/accueil.php">
-                    <img src="/arcadia/public/images/logo/Arcadia.svg" alt="Logo Arcadia">
-                </a>
-            </div>
-            <nav class="main-nav">
-                <ul>
-                    <?php if (isset($_SESSION['email']) && isset($_SESSION['role'])): ?>
-                        <?php
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            <?php echo htmlspecialchars($title); ?>
+        </title>
+        <link href="../../css/theme.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/arcadia/public/css/styles.css"> 
+        <!-- Style global -->
+        <link rel="stylesheet" href="/arcadia/public/css/header.css"> 
+        <!-- Style spécifique au header -->
+    </head>
+    <body>
+        <header>
+            <div class="header-container">
+                <div class="logo"><a href="/arcadia/views/accueil.php"> <img src="/arcadia/public/images/logo/Arcadia.svg" alt="Logo Arcadia"> </a>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <?php if (isset($_SESSION['email']) && isset($_SESSION['role'])): ?>
+                            <?php
                         // Affichage du menu en fonction du rôle
                         switch ($_SESSION['role']) {
                             case 'admin':
@@ -72,28 +78,33 @@ $title = $title ?? 'Zoo Arcadia';
                                 break;
                         }
                         ?>
-                    <?php else: ?>
-                        <!-- Menu pour les visiteurs non connectés -->
-                        <li><a href="/arcadia/views/accueil.php">Accueil</a></li>
-                        <li><a href="/arcadia/views/services.php">Services</a></li>
-                        <li><a href="/arcadia/views/habitats.php">Habitats</a></li>
-                        <li><a href="/arcadia/views/connexion.php">Connexion</a></li>
-                        <li><a href="/arcadia/views/contact.php">Contact</a></li>
-                    <?php endif; ?>
-                </ul>
-            </nav>
-
-            <!-- Menu hamburger pour les petits écrans -->
-            <div class="hamburger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-
-            <nav class="mobile-nav">
-                <ul>
-                    <?php if (isset($_SESSION['email']) && isset($_SESSION['role'])): ?>
-                        <?php
+                        <?php else: ?>
+                            <!-- Menu pour les visiteurs non connectés -->
+                            <li>
+                                <a href="/arcadia/views/accueil.php">Accueil</a>
+                            </li>
+                            <li>
+                                <a href="/arcadia/views/services.php">Services</a>
+                            </li>
+                            <li>
+                                <a href="/arcadia/views/habitats.php">Habitats</a>
+                            </li>
+                            <li>
+                                <a href="/arcadia/views/connexion.php">Connexion</a>
+                            </li>
+                            <li>
+                                <a href="/arcadia/views/contact.php">Contact</a>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
+                </nav>
+                <!-- Menu hamburger pour les petits écrans -->
+                <div class="hamburger-menu"><span></span><span></span><span></span>
+                </div>
+                <nav class="mobile-nav">
+                    <ul>
+                        <?php if (isset($_SESSION['email']) && isset($_SESSION['role'])): ?>
+                            <?php
                         switch ($_SESSION['role']) {
                             case 'admin':
                                 echo '
@@ -140,22 +151,31 @@ $title = $title ?? 'Zoo Arcadia';
                                 break;
                         }
                         ?>
-                    <?php else: ?>
-                        <li><a href="/arcadia/views/accueil.php">Accueil</a></li>
-                        <li><a href="/arcadia/views/services.php">Services</a></li>
-                        <li><a href="/arcadia/views/habitats.php">Habitats</a></li>
-                        <li><a href="/arcadia/views/connexion.php">Connexion</a></li>
-                        <li><a href="/arcadia/views/contact.php">Contact</a></li>
-                    <?php endif; ?>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <script>
-        document.querySelector('.hamburger-menu').addEventListener('click', function() {
-            document.querySelector('.mobile-nav').classList.toggle('open');
-        });
-    </script>
-</body>
+                        <?php else: ?>
+                            <li>
+                                <a href="/arcadia/views/accueil.php">Accueil</a>
+                            </li>
+                            <li>
+                                <a href="/arcadia/views/services.php">Services</a>
+                            </li>
+                            <li>
+                                <a href="/arcadia/views/habitats.php">Habitats</a>
+                            </li>
+                            <li>
+                                <a href="/arcadia/views/connexion.php">Connexion</a>
+                            </li>
+                            <li>
+                                <a href="/arcadia/views/contact.php">Contact</a>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <script>
+            document.querySelector('.hamburger-menu').addEventListener('click', function() {
+                document.querySelector('.mobile-nav').classList.toggle('open');
+            });
+        </script>
+    </body>
 </html>

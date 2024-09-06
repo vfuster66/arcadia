@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/../models/User.php';
+
 class AuthController {
     private $userModel;
 
@@ -7,43 +9,58 @@ class AuthController {
         $this->userModel = new User($pdo);
     }
 
-    public function login($email, $password) {
-        error_log("Tentative de connexion avec l'email: " . $email); // Log email utilisé pour la connexion
+    // Ajouter cette méthode pour les tests
+    public function setUserModel($userModel) {
+        $this->userModel = $userModel;
+    }
+
+    public function login($email, $password, $testMode = false) {
+        //error_log("Tentative de connexion avec l'email: " . $email);
 
         $user = $this->userModel->findUserByEmail($email);
 
         if ($user && $this->userModel->verifyPassword($password, $user['password'])) {
-            error_log("Connexion réussie pour l'utilisateur: " . $user['email']); // Log si la connexion réussit
+            //error_log("Connexion réussie pour l'utilisateur: " . $user['email']);
 
-            // Stocker les informations de l'utilisateur dans la session
             $_SESSION['email'] = $user['email'];
             $_SESSION['role_id'] = $user['role_id'];
             $_SESSION['role'] = $user['role'];
 
-            // Redirection basée sur le role_id
-            switch ($user['role_id']) {
-                case 3:  // Administrateur
-                    error_log("Redirection vers admin_dashboard.php"); // Log la redirection
-                    header("Location: ../views/admin_dashboard.php");
-                    break;
-                case 2:  // Employé
-                    error_log("Redirection vers employe_dashboard.php"); // Log la redirection
-                    header("Location: ../views/employe_dashboard.php");
-                    break;
-                case 1:  // Vétérinaire
-                    error_log("Redirection vers veterinaire_dashboard.php"); // Log la redirection
-                    header("Location: ../views/veterinaire_dashboard.php");
-                    break;
-                default:
-                    error_log("Role ID non reconnu, redirection vers connexion.php"); // Log si le role_id n'est pas reconnu
-                    header("Location: ../views/connexion.php");
-                    break;
+            if (!$testMode) {
+                switch ($user['role_id']) {
+                    case 1: // Administrateur
+                        header("Location: ../views/admin_dashboard.php");
+                        break;
+                    case 2: // Employé
+                        header("Location: ../views/employe_dashboard.php");
+                        break;
+                    case 3: // Vétérinaire
+                        header("Location: ../views/veterinaire_dashboard.php");
+                        break;
+                    default:
+                        header("Location: ../views/connexion.php");
+                        break;
+                }
+                exit();
+            } else {
+                return ['role_id' => $user['role_id'], 'redirect_to' => $this->getRedirectPath($user['role_id'])];
             }
-            exit();
         } else {
-            error_log("Échec de la connexion: Email ou mot de passe incorrect."); // Log en cas d'échec de la connexion
+            //error_log("Échec de la connexion: Email ou mot de passe incorrect.");
             return "Email ou mot de passe incorrect.";
         }
     }
+
+    private function getRedirectPath($role_id) {
+        switch ($role_id) {
+            case 1:
+                return 'admin_dashboard.php';
+            case 2:
+                return 'employe_dashboard.php';
+            case 3:
+                return 'veterinaire_dashboard.php';
+            default:
+                return 'connexion.php';
+        }
+    }
 }
-?>

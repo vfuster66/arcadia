@@ -113,6 +113,23 @@ ul {
     margin-left: 20px;
 }
 
+.content-section p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.content-section ul {
+    margin-left: 20px;
+    list-style-type: disc;
+}
+
+.content-section ul li {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .restaurant-info, .snack-info, .sucre-info {

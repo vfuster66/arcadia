@@ -86,7 +86,6 @@ $users = $userModel->getAllUsers();
                 <?php foreach ($users as $user): ?>
                     <div class="account-item" 
                         data-id="<?= htmlspecialchars($user['user_id'] ?? '') ?>" 
-                        data-name="<?= htmlspecialchars($user['username'] ?? '') ?>" 
                         data-email="<?= htmlspecialchars($user['email'] ?? '') ?>" 
                         data-role="<?= htmlspecialchars($user['role'] ?? '') ?>"
                         data-nom="<?= htmlspecialchars($user['nom'] ?? '') ?>" 

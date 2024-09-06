@@ -1,85 +1,135 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Références aux modals d'édition et de suppression
     const editServiceModal = document.getElementById('editServiceModal');
-    const addEditExtraInfoBtn = document.getElementById('add-edit-extra-info-btn');
-    const editExtraInfoContainer = document.getElementById('edit-extra-info-container');
+    const deleteServiceModal = document.getElementById('deleteServiceModal');
     const currentServiceImage = document.getElementById('current-service-image');
-    const viewServiceImageLink = document.getElementById('view-service-image');
     let extraInfoCount = 0;
 
-    // Fonction pour ajouter une nouvelle information supplémentaire
-    function addExtraInfo(title = '', text = '') {
-        extraInfoCount++;
-        const extraInfoItem = document.createElement('div');
-        extraInfoItem.classList.add('extra-info-item');
-        extraInfoItem.innerHTML = `
-            <label for="edit-extra-title-${extraInfoCount}">Titre de l'information</label>
-            <input type="text" id="edit-extra-title-${extraInfoCount}" name="edit-extra-title[]" value="${title}" required>
-            
-            <label for="edit-extra-text-${extraInfoCount}">Texte</label>
-            <textarea id="edit-extra-text-${extraInfoCount}" name="edit-extra-text[]" rows="2" required>${text}</textarea>
-
-            <button type="button" class="btn-delete-extra-info">Supprimer</button>
-        `;
-        editExtraInfoContainer.appendChild(extraInfoItem);
-
-        // Ajouter un événement pour supprimer cette information supplémentaire
-        extraInfoItem.querySelector('.btn-delete-extra-info').addEventListener('click', function () {
-            extraInfoItem.remove();
-        });
-    }
-
-    // Bouton pour ajouter une nouvelle information supplémentaire
-    addEditExtraInfoBtn.addEventListener('click', function () {
-        addExtraInfo();
-    });
-
-    // Exemple pour pré-remplir les informations supplémentaires existantes (si vous récupérez des données depuis la base)
-    function prefillExtraInfo(extraInfoArray) {
-        extraInfoArray.forEach(info => {
-            addExtraInfo(info.title, info.text);
-        });
-    }
-
-    // Fonction pour ouvrir le modal avec les informations du service
+    // Fonction pour ouvrir le modal d'édition
     function openEditModal(serviceData) {
+        document.getElementById('edit-service-id').value = serviceData.id;
         document.getElementById('edit-service-name').value = serviceData.name;
         document.getElementById('edit-service-description').value = serviceData.description;
-        editExtraInfoContainer.innerHTML = ''; // Clear existing extra info items
-        prefillExtraInfo(serviceData.extraInfo); // Refill with new data
+        document.getElementById('edit-service-type').value = serviceData.type;
+        document.getElementById('edit-service-horaires').value = serviceData.horaires;
+        document.getElementById('edit-service-prix').value = serviceData.prix;
 
-        // Gérer l'image du service
-        currentServiceImage.src = serviceData.image;
-        viewServiceImageLink.href = serviceData.image;
+        // Afficher l'image principale du service
+        if (serviceData.image) {
+            currentServiceImage.src = serviceData.image;
+            currentServiceImage.style.display = 'block';
+        } else {
+            currentServiceImage.style.display = 'none';
+        }
+
+        // Afficher les détails supplémentaires (service_details)
+        const extraInfoContainer = document.getElementById('edit-extra-info-container');
+        extraInfoContainer.innerHTML = ''; // Vide le conteneur avant d'ajouter de nouveaux éléments
+
+        serviceData.details.forEach((detail, index) => {
+            const detailElement = `
+                <div class="extra-info-item">
+                    <label for="extra-title-${index}">Titre de l'information</label>
+                    <input type="text" id="extra-title-${index}" name="extra-title[]" value="${detail.section_title}" required>
+                    
+                    <label for="extra-text-${index}">Texte</label>
+                    <textarea id="extra-text-${index}" name="extra-text[]" rows="2" required>${detail.section_content}</textarea>
+
+                    <!-- Afficher l'image secondaire si elle existe -->
+                    ${detail.image_path ? `<img src="${detail.image_path}" alt="Image du service" style="max-width: 100%; margin-top: 10px;">` : ''}
+                </div>
+            `;
+            extraInfoContainer.insertAdjacentHTML('beforeend', detailElement);
+        });
 
         editServiceModal.style.display = 'block';
     }
 
-    // Événement pour ouvrir le modal au clic sur le bouton "Modifier"
+    // Fonction pour ouvrir le modal de suppression
+    function openDeleteModal(serviceId) {
+        document.getElementById('delete-service-id').value = serviceId;
+        deleteServiceModal.style.display = 'block';
+    }
+
+    // Fonction pour ajouter dynamiquement des informations supplémentaires dans le modal d'édition
+    const addExtraInfoButton = document.getElementById('add-edit-extra-info-btn');
+    addExtraInfoButton.addEventListener('click', function () {
+        const extraInfoContainer = document.getElementById('edit-extra-info-container');
+        const newExtraInfo = `
+            <div class="extra-info-item">
+                <label for="extra-title-${extraInfoCount}">Titre de l'information</label>
+                <input type="text" id="extra-title-${extraInfoCount}" name="extra-title[]" required>
+
+                <label for="extra-text-${extraInfoCount}">Texte</label>
+                <textarea id="extra-text-${extraInfoCount}" name="extra-text[]" rows="2" required></textarea>
+            </div>
+        `;
+        extraInfoContainer.insertAdjacentHTML('beforeend', newExtraInfo);
+        extraInfoCount++;
+    });
+
+    // Événement pour ouvrir le modal d'édition
     const editButtons = document.querySelectorAll('.btn-edit');
     editButtons.forEach(button => {
         button.addEventListener('click', function () {
             const serviceItem = this.closest('.service-item');
             const serviceData = {
+                id: serviceItem.dataset.id,
                 name: serviceItem.dataset.name,
                 description: serviceItem.dataset.description,
-                image: serviceItem.dataset.image, // Assurez-vous que l'image est bien définie ici
-                extraInfo: [] // Remplir ici avec les données réelles si disponibles
+                type: serviceItem.dataset.type,
+                horaires: serviceItem.dataset.horaires,
+                prix: serviceItem.dataset.prix,
+                image: serviceItem.dataset.image,
+                details: JSON.parse(serviceItem.dataset.details) // Assure-toi que les détails sont au format JSON
             };
             openEditModal(serviceData);
         });
     });
 
-    // Gestion de la fermeture du modal
-    document.querySelectorAll('.modal .close, .btn-cancel').forEach(button => {
+    // Événement pour ouvrir le modal de suppression
+    const deleteButtons = document.querySelectorAll('.btn-delete');
+    deleteButtons.forEach(button => {
         button.addEventListener('click', function () {
-            editServiceModal.style.display = 'none';
+            const serviceItem = this.closest('.service-item');
+            const serviceId = serviceItem.dataset.id;
+            openDeleteModal(serviceId);
         });
     });
 
-    // Fermer le modal si on clique en dehors du contenu
-    window.addEventListener('click', function (event) {
-        if (event.target === editServiceModal) {
+    // Gestion de la fermeture des modals (édition et suppression) avec le bouton "Fermer" (X)
+    const closeButtons = document.querySelectorAll('.modal .close');
+    closeButtons.forEach(button => {
+        button.addEventListener('click', function () {
             editServiceModal.style.display = 'none';
-        }
+            deleteServiceModal.style.display = 'none';
+        });
+    });
+
+    // Gestion de l'annulation des actions (fermeture du modal de suppression ou d'édition)
+    const cancelButtons = document.querySelectorAll('.btn-cancel');
+    cancelButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            editServiceModal.style.display = 'none';
+            deleteServiceModal.style.display = 'none';
+        });
+    });
+
+    // Soumission du formulaire de suppression
+    const deleteForm = deleteServiceModal.querySelector('form');
+    deleteForm.addEventListener('submit', function (e) {
+        e.preventDefault(); // Empêcher l'envoi par défaut pour vérifier
+        this.submit(); // Soumettre le formulaire après la confirmation
+    });
+
+    // Soumission du formulaire d'édition
+    const editForm = document.getElementById('editServiceForm');
+    editForm.addEventListener('submit', function (e) {
+        e.preventDefault(); // Empêcher l'envoi automatique pour vérifier les données
+
+        // Effectuer toute validation supplémentaire ici si nécessaire
+        console.log(this.action);
+
+        this.submit(); // Soumettre le formulaire si tout est correct
     });
 });

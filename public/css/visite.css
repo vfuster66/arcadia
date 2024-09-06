@@ -1,5 +1,3 @@
-/* Styles spécifiques pour la page Visite Guidée */
-
 .main-container {
     max-width: 1200px;
     margin: 50px auto;
@@ -77,8 +75,8 @@ h1 {
     font-size: 14px;
     color: #212121;
     text-align: center;
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     line-height: 1.5;
     display: flex;
     align-items: center;
@@ -96,12 +94,13 @@ h1 {
 }
 
 /* Positioning the bubbles on the page */
-.bubble-savane-lions { top: 20%; left: 5%; }
-.bubble-savane-zebres { top: 50%; left: 10%; }
-.bubble-jungle-gorilles { top: 20%; right: 5%; }
-.bubble-jungle-ara { bottom: 2%; right: 2%; }
-.bubble-marais-crocodiles { bottom: 2%; left: 2%; }
-.bubble-marais-salamandres { bottom: 25%; right: 10%; }
+.bubble-savane-lions { top: 20%; left: 0%; }
+.bubble-savane-zebres { bottom: 14%; left: 38%; }
+.bubble-jungle-gorilles { top: 20%; right: 0%; }
+.bubble-jungle-ara { bottom: 12%; right: 4%; }
+.bubble-marais-crocodiles { bottom: 4%; left: 4%; }
+.bubble-marais-salamandres { bottom: -2%; right: 38%; }
+
 
 /* Responsive Design */
 

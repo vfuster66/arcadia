@@ -1,6 +1,6 @@
 /* /public/css/accueil.css */
 
-/* Styles pour la section Hero */
+/* Styles par défaut pour grands écrans (ordinateurs) */
 #hero {
     position: relative;
     width: 100%;
@@ -41,11 +41,102 @@
     transform: scale(1.05);
 }
 
+/* Pour les très grands écrans (au-dessus de 1600px) */
+@media (min-width: 1600px) {
+    #hero {
+        height: 900px;
+    }
+
+    #hero h1 {
+        font-size: 64px;
+    }
+
+    #hero .btn-hero {
+        font-size: 32px;
+        padding: 20px 40px;
+    }
+}
+
+/* Pour les écrans moyens (entre 1200px et 1600px) */
+@media (max-width: 1600px) {
+    #hero {
+        height: 750px;
+    }
+
+    #hero h1 {
+        font-size: 44px;
+    }
+
+    #hero .btn-hero {
+        font-size: 26px;
+        padding: 15px 30px;
+    }
+}
+
+/* Pour les tablettes (entre 768px et 1200px) */
+@media (max-width: 1200px) {
+    #hero {
+        height: 650px;
+    }
+
+    #hero h1 {
+        font-size: 36px;
+        margin-top: 450px;
+    }
+
+    #hero .btn-hero {
+        font-size: 22px;
+        padding: 12px 25px;
+    }
+}
+
+/* Pour les petits écrans (entre 480px et 768px) */
+@media (max-width: 768px) {
+    #hero {
+        height: 500px;
+        margin-top: 50px;
+    }
+
+    #hero h1 {
+        font-size: 30px !important;
+        margin-top: 200px !important;
+        margin-bottom: 20px !important;
+    }
+
+    #hero .btn-hero {
+        font-size: 18px;
+        padding: 10px 20px;
+    }
+}
+
+/* Pour les téléphones (en dessous de 480px) */
+@media (max-width: 480px) {
+    #hero {
+        height: 100vh !important;
+        margin-top: 0 !important;
+        padding: 10px !important;
+        background-size: cover !important;
+        background-position: center !important;
+    }
+
+    #hero h1 {
+        font-size: 16px !important;
+        margin-top: 400px !important;
+        margin-bottom: 20px !important;
+    }
+
+    #hero .btn-hero {
+        font-size: 14px !important;
+        padding: 8px 16px !important;
+        border-radius: 15px !important;
+    }
+}
+
 /* Section Présentation */
 #presentation {
     position: relative;
     width: 100%;
-    background: #FFFDE7;
+    background: #FFFFFF;
     padding: 50px 120px;
     box-sizing: border-box;
     margin-top: 50px;
@@ -79,7 +170,7 @@
 
 /* Section Nos Habitats */
 #habitats {
-    background: #FFFFFF;
+    background: #FFFDE7;
     padding: 100px 120px;
     text-align: center;
     width: 1200px;
@@ -136,6 +227,183 @@
     right: 30px;
     margin: 0;
 }
+
+/* Styles par défaut pour les grands écrans (ordinateurs) */
+#habitats {
+    background: #FFFDE7;
+    padding: 100px 120px;
+    text-align: center;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+#habitats h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+    color: #212121;
+    margin-bottom: 30px;
+}
+
+.habitat-cards {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.habitat-card {
+    width: 400px;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+}
+
+.habitat-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.habitat-card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    color: #FFFFFF;
+    position: absolute;
+    bottom: 150px;
+    right: 30px;
+    margin: 0;
+}
+
+/* Pour les très grands écrans (au-dessus de 1600px) */
+@media (min-width: 1600px) {
+    #habitats {
+        padding: 120px 150px;
+        width: 1400px;
+    }
+
+    .habitat-card {
+        width: 450px;
+        height: 650px;
+    }
+
+    #habitats h2 {
+        font-size: 40px;
+    }
+
+    .habitat-card h3 {
+        font-size: 32px;
+        bottom: 180px;
+    }
+}
+
+/* Pour les écrans moyens (entre 1200px et 1600px) */
+@media (max-width: 1600px) {
+    #habitats {
+        padding: 80px 100px;
+        width: 1000px;
+    }
+
+    .habitat-card {
+        width: 320px;
+        height: 500px;
+    }
+
+    #habitats h2 {
+        font-size: 34px;
+    }
+
+    .habitat-card h3 {
+        font-size: 26px;
+        bottom: 120px;
+    }
+}
+
+/* Pour les tablettes (entre 768px et 1200px) */
+@media (max-width: 1200px) {
+    #habitats {
+        padding: 60px 80px;
+        width: 90%;
+    }
+
+    .habitat-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .habitat-card {
+        width: 100%;
+        height: 400px;
+        margin-bottom: 20px;
+    }
+
+    #habitats h2 {
+        font-size: 32px;
+    }
+
+    .habitat-card h3 {
+        font-size: 24px;
+        bottom: 100px;
+    }
+}
+
+/* Pour les petits écrans (entre 480px et 768px) */
+@media (max-width: 768px) {
+    #habitats {
+        padding: 40px 50px;
+        width: 90%;
+    }
+
+    .habitat-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .habitat-card {
+        width: 100%;
+        height: 350px !important;
+        margin-bottom: 15px;
+    }
+
+    #habitats h2 {
+        font-size: 28px;
+    }
+
+    .habitat-card h3 {
+        font-size: 22px;
+        bottom: 80px;
+    }
+}
+
+/* Pour les téléphones (en dessous de 480px) */
+@media (max-width: 480px) {
+    #habitats {
+        padding: 20px 30px;
+        width: 100%;
+    }
+
+    .habitat-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .habitat-card {
+        width: 100%;
+        height: 300px;
+        margin-bottom: 10px;
+    }
+
+    #habitats h2 {
+        font-size: 24px;
+    }
+
+    .habitat-card h3 {
+        font-size: 20px;
+        bottom: 60px;
+    }
+}
+
 
 /* Section Nos Services */
 #services {
@@ -233,7 +501,7 @@
 
 /* Section Nos Animaux */
 #animaux {
-    background: #FFFFFF;
+    background: #FFFDE7;
     padding: 50px 120px 150px 120px;
     text-align: center;
     width: 1200px;
@@ -272,12 +540,12 @@
 .animal-info {
     padding: 20px;
     background: #A06F5E;
-    color: #FFFDE7;
+    color: #FFFFFF;
 }
 
 .animal-info2 {
     padding: 20px;
-    background: #FFFDE7;
+    background: #FFFFFF;
     color: #A06F5E;
 }
 
@@ -310,6 +578,224 @@
     font-size: 18px;
     line-height: 1.5;
 }
+
+/* Styles par défaut pour les grands écrans (ordinateurs) */
+#animaux {
+    background: #FFFDE7;
+    padding: 50px 120px 150px 120px;
+    text-align: center;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+#animaux h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+    color: #212121;
+    margin-bottom: 30px;
+}
+
+.animal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.animal-card {
+    background: #FFFFFF;
+    border: 1px solid #BDBDBD;
+    box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.animal-image {
+    width: 100%;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+}
+
+.animal-info, .animal-info2 {
+    padding: 20px;
+}
+
+.animal-info {
+    background: #A06F5E;
+    color: #FFFFFF;
+}
+
+.animal-info2 {
+    background: #FFFFFF;
+    color: #A06F5E;
+}
+
+.animal-info h3, .animal-info2 h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.animal-info p, .animal-info2 p {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/* Pour les très grands écrans (au-dessus de 1600px) */
+@media (min-width: 1600px) {
+    #animaux {
+        width: 1400px;
+        padding: 70px 150px 170px 150px;
+    }
+
+    #animaux h2 {
+        font-size: 40px;
+    }
+
+    .animal-card {
+        border-radius: 15px;
+    }
+
+    .animal-image {
+        height: 300px;
+    }
+
+    .animal-info h3, .animal-info2 h3 {
+        font-size: 28px;
+    }
+
+    .animal-info p, .animal-info2 p {
+        font-size: 20px;
+    }
+}
+
+/* Pour les écrans moyens (entre 1200px et 1600px) */
+@media (max-width: 1600px) {
+    #animaux {
+        width: 1000px;
+        padding: 50px 100px 120px 100px;
+    }
+
+    #animaux h2 {
+        font-size: 34px;
+    }
+
+    .animal-image {
+        height: 250px;
+    }
+
+    .animal-info h3, .animal-info2 h3 {
+        font-size: 24px;
+    }
+
+    .animal-info p, .animal-info2 p {
+        font-size: 18px;
+    }
+}
+
+/* Pour les tablettes (entre 768px et 1200px) */
+@media (max-width: 1200px) {
+    #animaux {
+        width: 90%;
+        padding: 40px 80px 100px 80px;
+    }
+
+    #animaux h2 {
+        font-size: 32px;
+    }
+
+    .animal-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .animal-card {
+        height: auto;
+    }
+
+    .animal-image {
+        height: 600px;
+    }
+
+    .animal-info h3, .animal-info2 h3 {
+        font-size: 22px;
+    }
+
+    .animal-info p, .animal-info2 p {
+        font-size: 16px;
+    }
+}
+
+/* Pour les petits écrans (entre 480px et 768px) */
+@media (max-width: 768px) {
+    #animaux {
+        width: 90%;
+        padding: 30px 50px 80px 50px;
+    }
+
+    #animaux h2 {
+        font-size: 28px;
+    }
+
+    .animal-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .animal-card {
+        height: auto;
+    }
+
+    .animal-image {
+        height: 400px;
+    }
+
+    .animal-info h3, .animal-info2 h3 {
+        font-size: 20px;
+    }
+
+    .animal-info p, .animal-info2 p {
+        font-size: 14px;
+    }
+}
+
+/* Pour les téléphones (en dessous de 480px) */
+@media (max-width: 480px) {
+    #animaux {
+        width: 100%;
+        padding: 20px 30px 60px 30px;
+    }
+
+    #animaux h2 {
+        font-size: 24px;
+    }
+
+    .animal-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .animal-card {
+        height: auto;
+    }
+
+    .animal-image {
+        height: 250px;
+    }
+
+    .animal-info h3, .animal-info2 h3 {
+        font-size: 18px;
+    }
+
+    .animal-info p, .animal-info2 p {
+        font-size: 12px;
+    }
+}
+
 
 /* Section Avis */
 #avis-carousel {

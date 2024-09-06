@@ -7,18 +7,18 @@ try {
     $userModel = new User($pdo);
 
     // Définir les informations de l'administrateur
-    $username = 'admin';
     $email = 'admin@arcadia.fr';
     $password = 'admin123'; // Choisissez un mot de passe sécurisé
-    $role_id = 1; // Assurez-vous que l'ID du rôle Administrateur est 1 dans votre table "role"
+    $roleLabel = 'admin'; // Utilisez le label du rôle
     $nom = 'Admin';
     $prenom = 'Principal';
 
     // Créer l'utilisateur administrateur
-    $userModel->createUser($username, $email, $password, $role_id, $nom, $prenom);
+    $userModel->createUser($email, $password, $roleLabel, $nom, $prenom);
 
     echo "Administrateur créé avec succès.";
 
 } catch (Exception $e) {
     echo "Erreur lors de la création de l'administrateur : " . $e->getMessage();
 }
+?>
