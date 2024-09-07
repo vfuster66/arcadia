@@ -163,6 +163,16 @@ Ce processus inclut les étapes nécessaires pour déployer l'application sur un
 
 ## Documentation
 
+## Identifiants de test
+
+Pour tester les différents rôles dans l'application, vous pouvez utiliser les identifiants suivants :
+
+| Rôle            | Email                 | Mot de passe  |
+|-----------------|-----------------------|---------------|
+| Administrateur  | admin@arcadia.fr       | admin123      |
+| Employé         | employe@arcadia.fr     | employe123    |
+| Vétérinaire     | veterinaire@arcadia.fr | vet123        |
+
 ### Structure du projet
 
 - **`/assets`** : Contient les fichiers CSS, JS, et images.
@@ -180,15 +190,6 @@ La gestion de projet se fait via un tableau Kanban partagé (Trello, Jira, ou No
 - **In Progress** : Fonctionnalités actuellement en cours de développement.
 - **Done** : Fonctionnalités terminées et intégrées dans `dev`.
 - **Deployed** : Fonctionnalités déployées en production (fusionnées dans `main`).
-
-## Contribuer
-
-Merci de suivre les lignes directrices du projet pour contribuer :
-
-- **Fork** le dépôt et créez une nouvelle branche pour chaque fonctionnalité ou correctif.
-- **Testez** vos changements avant de créer une Pull Request.
-- **Soumettez** une Pull Request lorsque votre branche est prête à être revue.
-
 
 ## Gestion des Tâches avec Trello
 
