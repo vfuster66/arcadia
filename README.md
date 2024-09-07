@@ -161,6 +161,51 @@ Ce processus inclut les étapes nécessaires pour déployer l'application sur un
    - Utilisez XAMPP ou MAMP pour démarrer Apache et MySQL.
    - Accédez à votre projet à l'adresse `http://localhost/arcadia`.
 
+## Implémentation des tests
+
+### Contexte
+
+Dans ce projet, les tests unitaires et fonctionnels sont mis en place pour garantir la fiabilité des fonctionnalités critiques, notamment celles liées à l'authentification des utilisateurs et à la gestion des comptes administratifs. Ces tests sont exécutés à l'aide de PHPUnit, un framework de test pour PHP.
+
+### Structure des tests
+
+Les tests sont organisés de manière à couvrir les principaux composants de l'application :
+
+1. Tests Unitaires
+Les tests unitaires vérifient des fonctionnalités isolées, comme les méthodes des modèles de données (ex. : User). Ils simulent l'interaction avec la base de données et permettent de s'assurer que les opérations CRUD (Créer, Lire, Mettre à jour, Supprimer) fonctionnent correctement.
+
+Exemple de tests :
+- **Création d'utilisateur** : Vérifie qu'un utilisateur peut être créé avec des informations valides.
+- **Mise à jour d'utilisateur** : Vérifie que les informations d'un utilisateur existant peuvent être mises à jour correctement.
+- **Suppression d'utilisateur** : Vérifie que la suppression d'un utilisateur fonctionne correctement.
+
+2. Tests Fonctionnels
+Les tests fonctionnels vérifient le bon comportement de fonctionnalités plus complexes, comme le processus de connexion, en simulant l'ensemble du cycle de vie de la fonction (de la requête à la réponse).
+
+Exemple de tests :
+- **Connexion avec des identifiants corrects** : Vérifie qu'un utilisateur avec des identifiants valides peut se connecter et que les informations de session sont correctement initialisées.
+- **Connexion avec des identifiants incorrects** : Vérifie que la tentative de connexion échoue avec des informations incorrectes et qu'un message d'erreur approprié est renvoyé.
+
+### Gestion de la Base de Données pendant les Tests
+
+Pour garantir l'intégrité des données lors de l'exécution des tests, chaque test utilise un mécanisme de transaction :
+
+- Avant chaque test, une transaction est démarrée.
+- À la fin de chaque test, la transaction est annulée (rollback), ce qui permet de réinitialiser l'état de la base de données.
+
+Cela permet d'exécuter les tests de manière isolée, sans affecter les données réelles en production ou dans la base de données de test.
+
+### Utilisation de Mocking dans les Tests
+
+Dans les tests unitaires, l'injection de dépendances est utilisée avec la méthode `setUserModel()` pour remplacer les interactions avec la base de données par des objets mockés, permettant de tester la logique métier indépendamment du stockage des données.
+
+### Exécution des Tests
+
+Les tests peuvent être exécutés via PHPUnit en utilisant la commande suivante :
+
+```bash
+./vendor/bin/phpunit --bootstrap vendor/autoload.php tests
+
 ## Documentation
 
 ### Structure du projet
