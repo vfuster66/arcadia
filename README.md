@@ -175,8 +175,8 @@ Pour tester les différents rôles dans l'application, vous pouvez utiliser les 
 
 ### Structure du projet
 
-- **`/assets`** : Contient les fichiers CSS, JS, et images.
-- **`/classes`** : Contient les classes PHP pour la logique métier.
+- **`/public`** : Contient les fichiers CSS, JS, et images.
+- **`/models`** : Contient les classes PHP pour la logique métier.
 - **`/config`** : Fichiers de configuration pour la base de données, etc.
 - **`/controllers`** : Fichiers PHP qui gèrent les requêtes et la logique d'application.
 - **`/views`** : Templates HTML/PHP pour l'affichage des pages.
