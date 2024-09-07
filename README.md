@@ -15,22 +15,18 @@ Notre projet utilise une gestion des branches basée sur les conventions suivant
 ### Branches de fonctionnalités
 Les branches de fonctionnalités sont dérivées de `dev` et suivent la convention de nommage `feature/*`. Voici les branches de fonctionnalités actuellement actives :
 
-- `feature/homepage` : Développement de la page d'accueil.
-- `feature/menu` : Développement du menu de navigation.
-- `feature/services-overview` : Développement de la vue globale des services.
-- `feature/habitats-overview` : Développement de la vue globale des habitats.
-- `feature/reviews` : Implémentation du système d'avis des visiteurs.
-- `feature/admin-space` : Création de l'espace administrateur.
-- `feature/employee-space` : Création de l'espace employé.
-- `feature/vet-space` : Création de l'espace vétérinaire.
-- `feature/authentication` : Mise en place du système de connexion.
-- `feature/contact-form` : Développement du formulaire de contact.
-- `feature/stats` : Implémentation des statistiques de consultation des animaux.
+- `feature/US1-accueil` : Développement de la page d'accueil.
+- `feature/US2-menu` : Développement du menu de navigation.
+- `feature/US3-services` : Développement de la vue globale des services.
+- `feature/US4-habitats-overview` : Développement de la vue globale des habitats.
+- `feature/US6-admin` : Création de l'espace administrateur.
+- `feature/US7-employe` : Création de l'espace employé.
+- `feature/US8-veterinaire` : Création de l'espace vétérinaire.
+- `feature/US10-contact` : Développement du formulaire de contact.
+- `feature/db` : Implémentation de la base de données
 - `feature/deployment` : Préparation et documentation du processus de déploiement.
-- `feature/documentation` : Rédaction de la documentation du projet.
-- `feature/testing` : Mise en place des tests unitaires et d'intégration.
-- `feature/ui-design` : Développement des maquettes et intégration de la charte graphique.
-- `feature/optimizations` : Mises à jour et optimisations globales du projet.
+- `feature/doc` : Rédaction de la documentation du projet.
+- `feature/tests` : Mise en place des tests unitaires et d'intégration.
 
 ## Workflow Git
 
@@ -65,9 +61,70 @@ Nous suivons un flux de travail Git basé sur les branches principales et de fon
 
 ## Processus de déploiement
 
-Les détails du processus de déploiement sont décrits dans la branche `feature/deployment`. Ce processus inclut les étapes nécessaires pour déployer l'application sur une plateforme cloud telle que Heroku, Vercel, ou Azure.
+Ce processus inclut les étapes nécessaires pour déployer l'application sur une plateforme cloud telle que Heroku.
 
-## Installation
+### Prérequis
+
+- Compte Heroku actif : [Créer un compte Heroku](https://signup.heroku.com/)
+- Installer **Heroku CLI** : [Installation du Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
+
+### Étapes de déploiement
+
+1. **Connexion à Heroku** :
+
+   Connectez-vous à votre compte Heroku avec la commande suivante :
+
+   ```bash
+   heroku login
+
+2. **Création d'une application Heroku** :
+
+   Créez une nouvelle application Heroku avec la commande suivante :
+
+   ```bash
+   heroku create arcadia-zoo-app
+
+3. **Ajout de PostgreSQL** :
+
+   Ajoutez PostgreSQL comme base de données pour votre application :
+
+   ```bash
+   heroku addons:create heroku-postgresql:hobby-dev
+
+4. **Déploiement de l'application** :
+
+   Assurez-vous que vous êtes sur la branche main et déployez l'application sur Heroku avec la commande suivante :
+
+   ```bash
+   git push heroku main
+
+5. **Configuration des variables d'environnement** :
+
+   Configurez les informations de connexion à la base de données et autres variables d'environnement :
+
+   ```bash
+   heroku config:set DATABASE_URL=<url_de_la_base_heroku>
+
+6. **Accéder à l'application ** :
+
+   Votre application est maintenant déployée et accessible à l'URL fournie par Heroku :
+
+   ```bash
+     https://arcadia-zoo-app.herokuapp.com
+
+### Mise à jour de l'application
+
+1. **Poussez vos changements vers la branche main** :
+
+   ```bash
+     git push origin main
+
+2. **Déployez les modifications sur Heroku** :
+
+   ```bash
+     git push heroku main
+
+## Installation locale
 
 ### Prérequis
 
