@@ -189,15 +189,13 @@ Merci de suivre les lignes directrices du projet pour contribuer :
 - **Testez** vos changements avant de créer une Pull Request.
 - **Soumettez** une Pull Request lorsque votre branche est prête à être revue.
 
-## Auteurs
-
-- **Virginie FUSTER PEREZ** - Développeur Principal
-
-## Licence
-
-Ce projet est sous licence MIT - voir le fichier [LICENSE.md](LICENSE.md) pour plus de détails.
 
 ## Gestion des Tâches avec Trello
+
+Pour consulter l'avancement et la gestion des tâches, vous pouvez accéder à notre tableau Trello en suivant ce lien : 
+
+[Trello - Arcadia](https://trello.com/invite/b/66b6862fc57d15a627c871f1/ATTI6fe0f5308e51aa7fe7d5debfb87405d86F01ABEB/arcadia)
+
 
 ### Organisation des Tâches dans Trello
 
